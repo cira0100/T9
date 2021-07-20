@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<kategorije>
+
+    <kategorija>
+        <naziv>Administration</naziv>
+        <podkategorija>Administrative assistant</podkategorija>
+        <podkategorija>Business development manager</podkategorija>
+        <podkategorija>Civil service administrative officer</podkategorija>
+        <podkategorija>Compliance officer</podkategorija>
+        <podkategorija>European Union official</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Animals, land and environment</naziv>
+        <podkategorija>Agricultural consultant</podkategorija>
+        <podkategorija>Animal technician</podkategorija>
+        <podkategorija>Countryside officer</podkategorija>
+        <podkategorija>Dog handler</podkategorija>
+        <podkategorija>Farm manager</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Computing and ICT</naziv>
+        <podkategorija>App developer</podkategorija>
+        <podkategorija>IT project analyst</podkategorija>
+        <podkategorija>Games tester</podkategorija>
+        <podkategorija> IT support technician</podkategorija>
+        <podkategorija> Helpdesk professional</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Construction and building</naziv>
+        <podkategorija>Architect</podkategorija>
+        <podkategorija>Bricklayer</podkategorija>
+        <podkategorija>Building surveyor</podkategorija>
+        <podkategorija>Plasterer</podkategorija>
+        <podkategorija>Road worker</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Design, arts and crafts</naziv>
+        <podkategorija>Animator</podkategorija>
+        <podkategorija>Costume designer</podkategorija>
+        <podkategorija>Fashion designer</podkategorija>
+        <podkategorija>Furniture designer</podkategorija>
+        <podkategorija>Medical illustrator</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Education and training</naziv>
+        <podkategorija>Higher education lecturer</podkategorija>
+        <podkategorija>Early years teacher</podkategorija>
+        <podkategorija>Careers adviser</podkategorija>
+        <podkategorija>Learning support assistant</podkategorija>
+        <podkategorija>Nursery manager</podkategorija>
+    </kategorija>
+    <kategorija>
+        <naziv>Engineering</naziv>
+        <podkategorija>Aerospace engineer</podkategorija>
+        <podkategorija>Building services engineer</podkategorija>
+        <podkategorija>CNC programmer</podkategorija>
+        <podkategorija>Drilling engineer</podkategorija>
+        <podkategorija>Electrician</podkategorija>
+    </kategorija>
+
+
+
+</kategorije>
