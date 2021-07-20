@@ -11,9 +11,6 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class ImiPosloviApplication {
 
-	@Autowired
-	private EMailSender service;
-
 	public static void main(String[] args) {
 		SpringApplication.run(ImiPosloviApplication.class, args);
 	
