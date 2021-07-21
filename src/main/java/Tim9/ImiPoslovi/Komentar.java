@@ -5,10 +5,21 @@ public class Komentar {
     private String s2;
     private String tekst;
 
-    public Komentar(String s1, String s2, String tekst) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private int id;
+
+    public Komentar(String s1, String s2, String tekst,int id) {
         this.s1 = s1;
         this.s2 = s2;
         this.tekst = tekst;
+        this.id=id;
     }
 
     public String getS1() {

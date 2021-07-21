@@ -621,11 +621,12 @@ public class Baza {
             while(rs.next()){
                 int iduser=rs.getInt("IdUsera");
                 String text=rs.getString("Tekst");
+                int idkom=rs.getInt("Id");
                 ArrayList<String> als= new ArrayList<>(2);
                 als=basicInfo(iduser);
                 String s1=als.get(0);
                 String s2=als.get(1);
-                Komentar temp=new Komentar(s1,s2,text);
+                Komentar temp=new Komentar(s1,s2,text,idkom);
                 ret.add(temp);
             }
             return ret;
@@ -634,11 +635,95 @@ public class Baza {
             throwables.printStackTrace();
         }
         return null;
+
+
     }
 
+    public boolean daLiJeMojKom(int idkom,String token){
+        int iduser=TokenToId(token);
+        if(iduser==-1)
+            return false;
+        try{
+            String sql1="SELECT * FROM `komentari` WHERE Id= ?;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,idkom);
+            ResultSet rs1= ps1.executeQuery();
+            if(!rs1.first())
+                return false;
+            if(iduser==rs1.getInt("IdUsera"))
+                return true;
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return false;
+    }
 
+    public boolean brisiKom(int idkom,String token){//obavezno reloadaj listu komentara nakon brisanja
+        int iduser=TokenToId(token);
+        int tip=vratiType(iduser);
+        if(iduser==-1)
+            return false;
+        try{
+            if(daLiJeMojKom(idkom,token) || tip==3){
+                String sql1="DELETE FROM `komentari` WHERE Id=?;";
+                PreparedStatement ps1=conn.prepareStatement(sql1);
+                ps1.setInt(1,idkom);
+                ps1.executeQuery();
+                return true;
+            }
+            else return false;
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return false;
+    }
 
+    public boolean brisiOgl(String token,int idogl){
+        int userid=TokenToId(token);
+        int tip=vratiType(userid);
+        try{
+            String sql1="SELECT * FROM `oglas` WHERE Id=?";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,idogl);
+            ResultSet rs1=ps1.executeQuery();
+            if(!rs1.first())
+                return false;
+        }
+        catch (SQLException th){
+            th.printStackTrace();
+            return false;
+        }
+        if(daLiJeMojOglas(token,idogl) || tip==3){
+            try{
+                String sql2="DELETE  FROM `prijave` WHERE IdOglasa = ?";
+                PreparedStatement ps2=conn.prepareStatement(sql2);
+                ps2.setInt(1,idogl);
+                ps2.executeQuery();
+                System.out.println("Obrisao Prijave....");
 
+                String sql3="DELETE  FROM `komentari` WHERE IdOglasa=?";
+                PreparedStatement ps3=conn.prepareStatement(sql3);
+                ps3.setInt(1,idogl);
+                ps3.executeQuery();
+                System.out.println("Obrisao Komentare....");
+
+                String sql4="DELETE  FROM `oglas` WHERE Id=?";
+                PreparedStatement ps4=conn.prepareStatement(sql4);
+                ps4.setInt(1,idogl);
+                ps4.executeQuery();
+                System.out.println("Obrisao Oglas.... ZAVRSIO");
+
+                return true;
+            }
+            catch (SQLException throwables){
+                throwables.printStackTrace();
+                return false;
+            }
+        }
+        else return false;
+    }
 
 
 
