@@ -20,5 +20,18 @@ public class PageController {
     public String error(){
         return "404";
     }
+    @GetMapping("/radnikIndex")
+    public String radnikIndex(){
+        return "RadnikIndex";
+    }
+    @GetMapping("/poslodavacIndex")
+    public String poslodavacIndex(){
+        return "PoslodavacIndex";
+    }
+    @GetMapping("/adminIndex")
+    public String adminIndex(){
+        return "AdminIndex";
+    }
+
 
 }

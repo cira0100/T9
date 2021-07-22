@@ -13,7 +13,6 @@ public class ImiPosloviApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ImiPosloviApplication.class, args);
-	
 
 }
 

@@ -1,6 +1,4 @@
 package Tim9.ImiPoslovi;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -723,18 +721,308 @@ public class Baza {
             }
         }
         else return false;
+
+
+    }
+
+    public boolean lajkDislajk(String token,int idogl){
+        int iduser=TokenToId(token);
+        if(iduser==-1)
+            return false;
+        int tip=vratiType(iduser);
+        if(tip==1){
+            try{
+                String sql1="SELECT * FROM `lajkovioglasa` WHERE IdOglasa=? AND IdRadnika=?;";
+                PreparedStatement ps1=conn.prepareStatement(sql1);
+                ps1.setInt(1,idogl);
+                ps1.setInt(2,iduser);
+                ResultSet rs1=ps1.executeQuery();
+                if(!rs1.first()){
+                    String sql2="INSERT INTO `lajkovioglasa` (`IdOglasa`,`IdRadnika`) VALUES (?,?);";
+                    PreparedStatement ps2=conn.prepareStatement(sql2);
+                    ps2.setInt(1,idogl);
+                    ps2.setInt(2,iduser);
+                    ps2.executeQuery();
+                    if(!updateLajk(idogl))
+                        return false;
+                    return true;
+                }
+                else{
+                    String sql2="DELETE FROM `lajkovioglasa` WHERE IdOglasa=? AND IdRadnika=?;";
+                    PreparedStatement ps2=conn.prepareStatement(sql2);
+                    ps2.setInt(1,idogl);
+                    ps2.setInt(2,iduser);
+                    ps2.executeQuery();
+                    if(!updateLajk(idogl))
+                        return false;
+                    return true;
+                }
+
+            }
+            catch(SQLException th){
+                th.printStackTrace();
+            }
+        }
+
+        return false;
+    }
+
+    public boolean updateLajk(int idogl){
+        try{
+            String sql1="SELECT count(*) as broj FROM `lajkovioglasa` WHERE IdOglasa=?;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,idogl);
+            ResultSet rs1=ps1.executeQuery();
+            rs1.first();
+            int ret=rs1.getInt("broj");
+            String sql2="UPDATE `oglas` SET Lajkovi=? WHERE Id=?;";
+            PreparedStatement ps2=conn.prepareStatement(sql2);
+            ps2.setInt(1,ret);
+            ps2.setInt(2,idogl);
+            ps2.executeQuery();
+            return true;
+        }
+        catch(SQLException th){
+            th.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean brisiPrijaveRadnika(int iduser){
+        try{
+            String sql1="DELETE FROM `prijave` WHERE IdRadnika=?;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,iduser);
+            ps1.executeQuery();
+            return true;
+        }catch (SQLException th){
+            th.printStackTrace();
+        }
+        return false;
+    }
+
+    public void updateLajkPostDel(){
+        try{
+            String sql1="SELECT * FROM `oglas`;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ResultSet rs1=ps1.executeQuery();
+            while(rs1.next()){
+                int idogl=rs1.getInt("Id");
+                updateLajk(idogl);
+            }
+        }catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+    }
+
+    public boolean brisiLajkoveRadnika(int iduser){
+        try{
+            String sql1="DELETE FROM `lajkovioglasa` WHERE IdRadnika=?;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,iduser);
+            ps1.executeQuery();
+            updateLajkPostDel();
+            return true;
+        }catch (SQLException th){
+            th.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean brisiUsera(int iduser,String token){
+        int tipobrisanog=vratiType(iduser);
+        int adminId=TokenToId(token);
+        int tip=vratiType(adminId);
+        if(tip!=3)
+            return false;
+        if(tipobrisanog==2){
+
+           ArrayList<Oglas> oglasi= oglasiPoslodavca(iduser);
+           for(Oglas oglas : oglasi)
+               brisiOgl(token,oglas.getIdOglasa());
+
+            ArrayList<Komentar> komentari=listSveKom(iduser);
+            for(Komentar komentar:komentari){
+                brisiKom(komentar.getId(),token);
+
+                try {
+                    sql="DELETE FROM `poslodavac` WHERE Id=?;";
+                    PreparedStatement ps=conn.prepareStatement(sql);
+                    ps.setInt(1,iduser);
+                    ps.executeQuery();
+                    sql="DELETE FROM `glavna` WHERE Id=?;";
+                    ps=conn.prepareStatement(sql);
+                    ps.setInt(1,iduser);
+                    ps.executeQuery();
+                    return true;
+
+
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                return false;
+
+
+           }
+
+        }else if(tipobrisanog==1){
+            brisiPrijaveRadnika(iduser);
+            brisiLajkoveRadnika(iduser);
+            ArrayList<Komentar> kometari=listSveKom(iduser);
+            for(Komentar komentar:kometari)
+                brisiKom(komentar.getId(),token);
+            try {
+                sql="DELETE FROM `radnik` WHERE Id=?;";
+                PreparedStatement ps=conn.prepareStatement(sql);
+                ps.setInt(1,iduser);
+                ps.executeQuery();
+                sql="DELETE FROM `glavna` WHERE Id=?;";
+                ps=conn.prepareStatement(sql);
+                ps.setInt(1,iduser);
+                ps.executeQuery();
+                return true;
+
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return false;
+
+        }else
+            return false;
+        return false;
+    }
+
+    public ArrayList<Komentar> listSveKom(int idKorisnika){
+        try{
+            sql="SELECT * FROM `komentari` WHERE IdUsera=?;";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setInt(1,idKorisnika);
+            ResultSet rs=ps.executeQuery();
+            if(rs.first())
+                rs.previous();
+            else
+                return null;
+
+            ArrayList<Komentar> ret=new ArrayList<>(20);
+            while(rs.next()){
+                int iduser=rs.getInt("IdUsera");
+                String text=rs.getString("Tekst");
+                int idkom=rs.getInt("Id");
+                ArrayList<String> als= new ArrayList<>(2);
+                als=basicInfo(iduser);
+                String s1=als.get(0);
+                String s2=als.get(1);
+                Komentar temp=new Komentar(s1,s2,text,idkom);
+                ret.add(temp);
+            }
+            return ret;
+        }
+        catch(SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return null;
+
+
+    }
+    public boolean brisiUsera(String token){
+        int iduser=TokenToId(token);
+        int tipobrisanog=vratiType(iduser);
+        if(tipobrisanog==2){
+
+            ArrayList<Oglas> oglasi= oglasiPoslodavca(iduser);
+            for(Oglas oglas : oglasi)
+                brisiOgl(token,oglas.getIdOglasa());
+
+            ArrayList<Komentar> komentari=listSveKom(iduser);
+            for(Komentar komentar:komentari){
+                brisiKom(komentar.getId(),token);
+
+                try {
+                    sql="DELETE FROM `poslodavac` WHERE Id=?;";
+                    PreparedStatement ps=conn.prepareStatement(sql);
+                    ps.setInt(1,iduser);
+                    ps.executeQuery();
+                    sql="DELETE FROM `glavna` WHERE Id=?;";
+                    ps=conn.prepareStatement(sql);
+                    ps.setInt(1,iduser);
+                    ps.executeQuery();
+                    return true;
+
+
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                return false;
+
+
+            }
+
+        }else if(tipobrisanog==1){
+            brisiPrijaveRadnika(iduser);
+            brisiLajkoveRadnika(iduser);
+            ArrayList<Komentar> kometari=listSveKom(iduser);
+            for(Komentar komentar:kometari)
+                brisiKom(komentar.getId(),token);
+            try {
+                sql="DELETE FROM `radnik` WHERE Id=?;";
+                PreparedStatement ps=conn.prepareStatement(sql);
+                ps.setInt(1,iduser);
+                ps.executeQuery();
+                sql="DELETE FROM `glavna` WHERE Id=?;";
+                ps=conn.prepareStatement(sql);
+                ps.setInt(1,iduser);
+                ps.executeQuery();
+                return true;
+
+
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return false;
+
+        }else
+            return false;
+        return false;
     }
 
 
 
 
 
+    public ArrayList<Podaci> listUsers(String token){
+        int idadmina=TokenToId(token);
+        if(idadmina==-1)
+            return null;
+        int tipchk=vratiType(idadmina);
+        if(tipchk!=3)
+            return null;
+        try{
+            ArrayList<Podaci> pod=new ArrayList<>(20);
+            String sql1="SELECT * FROM `glavna` WHERE Type !=3;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ResultSet rs1=ps1.executeQuery();
+            while(rs1.next()) {
+                int id = rs1.getInt("Id");
+                String usr = rs1.getString("Username");
+                String mail = rs1.getString("Mail");
+                Podaci temp = new Podaci(id, usr, mail);
+                pod.add(temp);
+            }
+            if(pod.isEmpty())
+                return null;
+            return pod;
+        }
+        catch(SQLException th){
+            th.printStackTrace();
+        }
 
-
-
-
-
-
+        return null;
+    }
 
 
 }
