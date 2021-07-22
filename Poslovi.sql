@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 20, 2021 at 11:40 AM
+-- Generation Time: Jul 22, 2021 at 11:20 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `glavna` (
   `Type` int(11) NOT NULL,
   `Token` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `glavna`
@@ -69,7 +69,9 @@ INSERT INTO `glavna` (`Id`, `Username`, `Password`, `Mail`, `Type`, `Token`) VAL
 (29, 'Zika', '$2a$10$63neYvkTmySyfCt8pFdiROsb3GcL4gvVsUunFT1hXSbMyQChh3LP6', 'zika@gmail.com', 2, 'S12k8wfqYCcWbDfa10bms1tBbfQ7xw1L'),
 (30, 'Mika', '$2a$10$Cx62qG/7VxzaFIg0JaQfROcfLuI7ivtC4PpAQP6oEXgORU1JET/jC', 'mika@gmail.com', 1, 'Bi53L2iDzMw4Wta0sPJgj534zfCkvpbY'),
 (31, 'Aca', '$2a$10$8TWsf5c5rF2XlfLgjz88aOrGUh6XHovmh3AS4Y5oR2vZH8zqgVPvu', 'aca@gmail.com', 1, 'BlqtgP1rMn3ufgFv1i3b5aVWxgVYgz9A'),
-(32, 'Cira', '$2a$10$iLAZPbEe.gdKPprZ5Hcb9u8C0cPTzft9wVDtQ4WzmIGRu0eG3BYKa', 'ciraboxkg@gmail.com', 2, 'dSa4fBef58WUTHU6wEA5t8hpD2AKP7zq');
+(32, 'Cira', '$2a$10$iLAZPbEe.gdKPprZ5Hcb9u8C0cPTzft9wVDtQ4WzmIGRu0eG3BYKa', 'ciraboxkg@gmail.com', 2, 'dSa4fBef58WUTHU6wEA5t8hpD2AKP7zq'),
+(33, 'fdsfsdfsd', '$2a$10$2nrBDETJpvMtpSFSWAvcmOCgEpJEHc.O4Jl.Hem7TT/i.lFQhYHEi', 'fsdfdsfsddf@gmail.com', 1, 'cjMg05pxiJborH12oat0PGPp9Ydl5p7f'),
+(34, 'hfghfghfghfg', '$2a$10$lbrEzviwg12LJl/wEBXWe.BYFDhJ03pvWLebp14Ux8LJXV1Om1BUK', 'hgfhfg@gmail.com', 2, 'zckhzBBbGqumpvgHvdIV9p9g6bbzbahq');
 
 -- --------------------------------------------------------
 
@@ -99,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `komentari` (
   PRIMARY KEY (`Id`),
   KEY `IdOglasa` (`IdOglasa`),
   KEY `IdRadnika` (`IdUsera`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `komentari`
@@ -107,7 +109,8 @@ CREATE TABLE IF NOT EXISTS `komentari` (
 
 INSERT INTO `komentari` (`Id`, `IdOglasa`, `IdUsera`, `Tekst`) VALUES
 (1, 2, 31, 'alo aco'),
-(2, 2, 30, 'molim');
+(2, 2, 30, 'molim'),
+(3, 3, 27, 'olijoijouiiuo');
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,14 @@ CREATE TABLE IF NOT EXISTS `lajkovioglasa` (
   PRIMARY KEY (`Id`),
   KEY `IDOglasa` (`IdOglasa`),
   KEY `IDRadnika` (`IdRadnika`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `lajkovioglasa`
+--
+
+INSERT INTO `lajkovioglasa` (`Id`, `IdOglasa`, `IdRadnika`) VALUES
+(1, 3, 31);
 
 -- --------------------------------------------------------
 
@@ -148,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `oglas` (
   `Remote` tinyint(1) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `IdPoslodavca` (`IdPoslodavca`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `oglas`
@@ -156,7 +166,8 @@ CREATE TABLE IF NOT EXISTS `oglas` (
 
 INSERT INTO `oglas` (`Id`, `Naziv`, `IdPoslodavca`, `Datum-Postavljanja`, `Datum-Isteka`, `Lajkovi`, `Posete`, `Kategorija`, `PodKategorije`, `Plata`, `Slika`, `Tekst`, `Remote`) VALUES
 (1, 'Programer', 28, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 1000, 'Slika', 'Veoma dobar oglas', 0),
-(2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0);
+(2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0),
+(3, 'Programer', 29, '2021-07-20', '2021-07-30', 0, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1);
 
 -- --------------------------------------------------------
 
@@ -194,7 +205,8 @@ CREATE TABLE IF NOT EXISTS `poslodavac` (
 INSERT INTO `poslodavac` (`Id`, `Naziv`, `Adresa`, `Slika`, `Ocena`) VALUES
 (28, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
 (29, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
-(32, 'Old', 'dsadasdas', 'C:\\fakepath\\pom.xml', NULL);
+(32, 'Old', 'dsadasdas', 'C:\\fakepath\\pom.xml', NULL),
+(34, 'gfdgfdgdf', 'gdfgdfgfd', 'C:\\fakepath\\42 perfect clears IN A ROW! Jstris PC mode.mp4', NULL);
 
 -- --------------------------------------------------------
 
@@ -210,7 +222,7 @@ CREATE TABLE IF NOT EXISTS `prijave` (
   PRIMARY KEY (`Id`),
   KEY `IdOglasa` (`IdOglasa`),
   KEY `IdRadnika` (`IdRadnika`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `prijave`
@@ -218,7 +230,8 @@ CREATE TABLE IF NOT EXISTS `prijave` (
 
 INSERT INTO `prijave` (`Id`, `IdOglasa`, `IdRadnika`) VALUES
 (1, 1, 31),
-(4, 2, 31);
+(4, 2, 31),
+(5, 3, 31);
 
 -- --------------------------------------------------------
 
@@ -242,7 +255,8 @@ CREATE TABLE IF NOT EXISTS `radnik` (
 
 INSERT INTO `radnik` (`Id`, `Ime`, `Prezime`, `Date`, `Slika`) VALUES
 (30, 'Mika', 'Mikic', '2000-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
-(31, 'Aca', 'Acic', '2001-10-10', 'C:\\fakepath\\ProjekatTest.iml');
+(31, 'Aca', 'Acic', '2001-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
+(33, 'gfdgfdg', 'gdfgdf', '2000-10-10', 'C:\\fakepath\\pom.xml');
 
 --
 -- Constraints for dumped tables

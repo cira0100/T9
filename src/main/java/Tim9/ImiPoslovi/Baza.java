@@ -701,6 +701,12 @@ public class Baza {
                 ps2.executeQuery();
                 System.out.println("Obrisao Prijave....");
 
+                sql2="DELETE  FROM `lajkovioglasa` WHERE IdOglasa = ?";
+                ps2=conn.prepareStatement(sql2);
+                ps2.setInt(1,idogl);
+                ps2.executeQuery();
+                System.out.println("Obrisao Lajkove....");
+
                 String sql3="DELETE  FROM `komentari` WHERE IdOglasa=?";
                 PreparedStatement ps3=conn.prepareStatement(sql3);
                 ps3.setInt(1,idogl);
@@ -838,11 +844,13 @@ public class Baza {
         if(tipobrisanog==2){
 
            ArrayList<Oglas> oglasi= oglasiPoslodavca(iduser);
+           if(oglasi!=null)
            for(Oglas oglas : oglasi)
                brisiOgl(token,oglas.getIdOglasa());
 
             ArrayList<Komentar> komentari=listSveKom(iduser);
-            for(Komentar komentar:komentari){
+            if(komentari!=null)
+            for(Komentar komentar:komentari)
                 brisiKom(komentar.getId(),token);
 
                 try {
@@ -864,12 +872,13 @@ public class Baza {
                 return false;
 
 
-           }
+
 
         }else if(tipobrisanog==1){
             brisiPrijaveRadnika(iduser);
             brisiLajkoveRadnika(iduser);
             ArrayList<Komentar> kometari=listSveKom(iduser);
+            if(kometari!=null)
             for(Komentar komentar:kometari)
                 brisiKom(komentar.getId(),token);
             try {
@@ -892,7 +901,6 @@ public class Baza {
 
         }else
             return false;
-        return false;
     }
 
     public ArrayList<Komentar> listSveKom(int idKorisnika){
@@ -933,11 +941,13 @@ public class Baza {
         if(tipobrisanog==2){
 
             ArrayList<Oglas> oglasi= oglasiPoslodavca(iduser);
+            if(oglasi!=null)
             for(Oglas oglas : oglasi)
                 brisiOgl(token,oglas.getIdOglasa());
 
             ArrayList<Komentar> komentari=listSveKom(iduser);
-            for(Komentar komentar:komentari){
+            if(komentari!=null)
+            for(Komentar komentar:komentari)
                 brisiKom(komentar.getId(),token);
 
                 try {
@@ -959,12 +969,13 @@ public class Baza {
                 return false;
 
 
-            }
+
 
         }else if(tipobrisanog==1){
             brisiPrijaveRadnika(iduser);
             brisiLajkoveRadnika(iduser);
             ArrayList<Komentar> kometari=listSveKom(iduser);
+            if(kometari!=null)
             for(Komentar komentar:kometari)
                 brisiKom(komentar.getId(),token);
             try {
@@ -987,7 +998,7 @@ public class Baza {
 
         }else
             return false;
-        return false;
+
     }
 
 
