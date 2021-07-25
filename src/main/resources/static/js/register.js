@@ -190,7 +190,12 @@ function testPoslodavac(username,password,email,naziv,adresa,slika){
         {
             message="Slika ne sme biti prazana";
         }
-        
+        var file=document.getElementById("InputSlika1").files[0];
+        var  fileType = file['type'];
+        var validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        if (!validImageTypes.includes(fileType)) {
+            message="Slika mora biti gif,jpeg ili png";
+        }
         if(message==="")
         message=proveraVelicineFajla(document.getElementById("InputSlika1").files[0].size);
         
@@ -226,6 +231,12 @@ function testRadnik(username,password,email,ime,prezime,date,slika){
         else if(slika==="")
         {
             message="Slika ne sme biti prazana";
+        }
+        var file=document.getElementById("InputSlika").files[0];
+        var  fileType = file['type'];
+        var validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+        if (!validImageTypes.includes(fileType)) {
+            message="Slika mora biti gif,jpeg ili png";
         }
         if(message==="")
         message=proveraVelicineFajla(document.getElementById("InputSlika").files[0].size);
@@ -265,6 +276,7 @@ function uploadfile(Id,username){
 }
 
 function proveraVelicineFajla(velicina){
+    
     var sizeInMB = (velicina / (1024*1024)).toFixed(2);
     if(sizeInMB>10)
         return "velicina mora biti manja od 10MB";
