@@ -65,7 +65,7 @@ function Registruj(Id){
         var email=document.getElementById("InputEmail1").value;
         var naziv=document.getElementById("InputNaziv").value;
         var adresa=document.getElementById("InputAdresa").value;
-        var slika=encodeURI(document.getElementById("InputSlika1").value);
+        var slika=username+"."+document.getElementById("InputSlika1").value.split(".").pop();
         var alertHolder=document.getElementById("alert_placeholder");
         var uspeh='<div class="alert alert-dismissible alert-success">'
                                                                        +'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>'
@@ -86,6 +86,7 @@ function Registruj(Id){
                     }
                     else
                     {
+                        uploadfile(Id,username);
                         alertHolder.innerHTML=uspeh;
                     }
 
@@ -112,7 +113,7 @@ function Registruj(Id){
         var ime=document.getElementById("InputIme").value;
         var prezime=document.getElementById("InputPrezime").value;
         var date=encodeURI(document.getElementById("date").value);
-        var slika=encodeURI(document.getElementById("InputSlika").value);
+        var slika=username+"."+document.getElementById("InputSlika1").value.split(".").pop();
         
         var alertHolder=document.getElementById("alert_placeholder");
         var uspeh='<div class="alert alert-dismissible alert-success">'
@@ -135,7 +136,8 @@ function Registruj(Id){
             }
                     else
                     {
-                    alertHolder.innerHTML=uspeh;
+                        uploadfile(Id,username);
+                        alertHolder.innerHTML=uspeh;
                     }
 
 
@@ -188,6 +190,12 @@ function testPoslodavac(username,password,email,naziv,adresa,slika){
         {
             message="Slika ne sme biti prazana";
         }
+        
+        if(message==="")
+        message=proveraVelicineFajla(document.getElementById("InputSlika1").files[0].size);
+        
+        
+        
         return message;
     
     
@@ -219,6 +227,9 @@ function testRadnik(username,password,email,ime,prezime,date,slika){
         {
             message="Slika ne sme biti prazana";
         }
+        if(message==="")
+        message=proveraVelicineFajla(document.getElementById("InputSlika").files[0].size);
+        
         return message;
     
 }
@@ -229,4 +240,33 @@ function isValidDate(dateString) {
   var dNum = d.getTime();
   if(!dNum && dNum !== 0) return false; // NaN value, Invalid date
   return d.toISOString().slice(0,10) === dateString;
+}
+
+
+function uploadfile(Id,username){
+    let formData = new FormData();
+    var photo;
+    var ext;
+    if(Id===1){
+        photo=document.getElementById("InputSlika1").files[0];
+        ext=document.getElementById("InputSlika1").value.split(".").pop();
+    }else if(Id===2)
+    {
+        photo=document.getElementById("InputSlika").files[0];
+        ext=document.getElementById("InputSlika").value.split(".").pop();
+        
+        
+    }else return;
+    var blob =photo.slice(0, photo.size); 
+    var newFile = new File([blob], username+"."+ext);
+
+    formData.append("file", newFile);
+    fetch('/upload', {method: "POST", body: formData});
+}
+
+function proveraVelicineFajla(velicina){
+    var sizeInMB = (velicina / (1024*1024)).toFixed(2);
+    if(sizeInMB>10)
+        return "velicina mora biti manja od 10MB";
+    return "";
 }
