@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/css.css" rel="stylesheet">
+  <title>Dodaj Admina</title>
+</head>
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">ImiPoslovi</a>
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse collapse" id="navbarColor01" style="">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pocetna
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lista Korisnika</a>
+
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Dodaj Admina</a>
+          <span class="visually-hidden">(current)</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Log Out</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+
+
+  <div class="row align-items-center">
+    <div class="col-md-4 mx-auto" style="border:4px solid #593196;margin-top:200px;padding-bottom:15px;background-color:white;">
+      <form >
+        <div class="form-group">
+          <label for="Username" class="form-label mt-4">Username</label>
+          <input type="text" class="form-control" id="Username"  name="username" placeholder="Unesite Username">
+          <label for="InputPassword" class="form-label mt-4">Password</label>
+          <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password">
+          <label for="Email" class="form-label mt-4">Email</label>
+          <input type="text" class="form-control" id="Email"  name="Email" placeholder="Unesite Email">
+          <label for="Ime" class="form-label mt-4">Ime</label>
+          <input type="text" class="form-control" id="Ime"  name="Ime" placeholder="Unesite Ime">
+          <label for="Prezime" class="form-label mt-4">Prezime</label>
+          <input type="text" class="form-control" id="Prezime"  name="Prezime" placeholder="Unesite Prezime">
+        </div>
+        <br>
+        <p class="bs-component">
+          <button type="button" onclick="dodaj();" class="btn btn-primary " style="margin-top:5px;">Dodaj Admina</button>
+
+        </p>
+        <div id ="alert_placeholder"></div>
+      </form>
+    </div>
+  </div>
+
+
+
+
+
+
+</div>
+
+
+<footer class="page-footer fixed-bottom font-small bg-primary">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
+    Ognjen Cirkovic & Branislav Radivojevic
+  </div>
+  <!-- Copyright -->
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Optional JavaScript
+-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/bootstrap.bundle.js" ></script>
+
+</body>
+</html>

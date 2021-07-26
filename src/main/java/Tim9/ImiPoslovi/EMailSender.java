@@ -16,6 +16,8 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 @Service
@@ -69,7 +71,7 @@ public class EMailSender  {
              helper.setTo(email);
              helper.setSubject(Naziv);
 
-             FileSystemResource file = new FileSystemResource(new File(fileToAttach));
+             FileSystemResource file = new FileSystemResource(new File("files/"+fileToAttach));
              helper.addAttachment("cv.pdf", file);
              helper.setText("", true);
 

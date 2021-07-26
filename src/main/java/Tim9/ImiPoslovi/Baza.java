@@ -27,7 +27,7 @@ public class Baza {
         char c;
         int t;
         for(int i = 0; i < 32; i++) {
-            t = (int)(Math.random() * 100) % 62; /* 26 lowercase + 26 uppercase + 10 digits; values 0 - 61. */
+            t = (int)(Math.random() * 100) % 62;
 
             if(t < 10) {
                 c = (char)('0' + t);

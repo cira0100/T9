@@ -32,6 +32,34 @@ public class PageController {
     public String adminIndex(){
         return "AdminIndex";
     }
+    @GetMapping("/listaKorisnika")
+    public String listaKorisnika(){
+        return "ListaKorisnika";
+    }
+    @GetMapping("/dodajAdmina")
+    public String dodajAdmina(){
+        return "DodajAdmina";
+    }
+    @GetMapping("/listaPoslodavaca")
+    public String listaPoslodavaca(){
+        return "ListaPoslodavaca";
+    }
+    @GetMapping("/listaPoslodavacaRadnik")
+    public String listaPoslodavacaRadnik(){
+        return "ListaPoslodavacaRadnik";
+    }
+    @GetMapping("/mojePrijave")
+    public String mojePrijave(){
+        return "MojePrijave";
+    }
+    @GetMapping("/mojiOglasi")
+    public String mojiOglasi(){
+        return "MojiOglasi";
+    }
+    @GetMapping("/dodajOglas")
+    public String dodajOglas(){
+        return "DodajOglas";
+    }
 
 
 }
