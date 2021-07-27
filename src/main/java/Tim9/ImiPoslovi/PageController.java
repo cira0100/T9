@@ -60,6 +60,10 @@ public class PageController {
     public String dodajOglas(){
         return "DodajOglas";
     }
+    @GetMapping("/oglas")
+    public String oglas(){
+        return "Oglas";
+    }
 
 
 }
