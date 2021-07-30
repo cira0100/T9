@@ -1,13 +1,32 @@
 package Tim9.ImiPoslovi;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
 
 
 @Controller
 public class PageController {
+
     @GetMapping("/")
-    public String home(){ return "index"; }
+    public String home(Model model){
+        Baza baza=new Baza();
+        ArrayList<Oglas> oglasi =baza.sviOglasi();
+
+    model.addAttribute("oglasi",oglasi);
+
+
+
+
+
+        return "index";
+    }
+
+
+
+
     @GetMapping("/login1")
     public String login(){
         return "login";
@@ -64,6 +83,9 @@ public class PageController {
     public String oglas(){
         return "Oglas";
     }
+
+
+
 
 
 }

@@ -3,6 +3,8 @@ package Tim9.ImiPoslovi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
+
 
 @SpringBootApplication
 public class ImiPosloviApplication {
@@ -14,6 +16,7 @@ public class ImiPosloviApplication {
 	baza.brisiUsera(31,"uktW42mck429V22bdXgeco3IcTta6kH");
 	baza.brisiUsera(33,"uktW42mck429V22bdXgeco3IcTta6kH");
 	baza.brisiUsera("zckhzBBbGqumpvgHvdIV9p9g6bbzbahq");*/
+
 }
 
 

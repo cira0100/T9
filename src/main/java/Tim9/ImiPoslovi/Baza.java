@@ -1034,6 +1034,42 @@ public class Baza {
 
         return null;
     }
+    public ArrayList<Oglas> sviOglasi(){
+        sql="SELECT * FROM `oglas` ;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.first()) {
+                rs.previous();
+            } else {
+                return null;
+            }
+            ArrayList<Oglas> oglasipos = new ArrayList<Oglas>(20);
+            while(rs.next()){
+                int IdOglasa= rs.getInt("Id");
+                String Naziv= rs.getString("Naziv");
+                int idPoslodavca= rs.getInt("IdPoslodavca");
+                Date DatumPostavljanja= rs.getDate("Datum-Postavljanja");
+                Date DatumIsteka= rs.getDate("Datum-Isteka");
+                int Lajkovi= rs.getInt("Lajkovi");
+                int Posete= rs.getInt("Posete");
+                String Kategorija= rs.getString("Kategorija");
+                String PodLategorije= rs.getString("PodKategorije");
+                int plata = rs.getInt("plata");
+                String Slika = rs.getString("Slika");
+                String Tekst = rs.getString("Tekst");
+                boolean Remote = rs.getBoolean("Remote");
+
+                Oglas temp= new Oglas(IdOglasa,Naziv,idPoslodavca,DatumPostavljanja,DatumIsteka,Lajkovi,Posete,Kategorija,PodLategorije,plata,Slika,Tekst,Remote);
+                oglasipos.add(temp);
+            }
+            return oglasipos;
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return null;
+    }
 
 
 }
