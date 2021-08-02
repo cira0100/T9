@@ -19,4 +19,19 @@ public class Login {
         else
             return ret;
     }
+
+    @GetMapping("/tokenTotype")
+    public int TokenTotype(@RequestParam(name = "token") String token){
+        int ret=-1;
+        if(token=="")
+            return ret;
+        Baza baza=new Baza();
+        int id =baza.TokenToId(token);
+        if(id==-1)
+            return ret;
+        ret= baza.vratiType(id);
+
+        return ret;
+    }
+
 }

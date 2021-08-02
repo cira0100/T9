@@ -41,7 +41,6 @@ public class Registracija {
                                    @RequestParam(name = "adresa") String adresa,
                                    @RequestParam(name = "slika") String slika)
     {
-
         Korisnik korisnik=new Poslodavac(username,password,mail,2,naziv,adresa,slika);
         Baza baza=new Baza();
         boolean uspeh = false;
@@ -73,4 +72,30 @@ public class Registracija {
 
         return uspeh;
     }
+    @GetMapping("/registrujOglas")
+    public boolean registrujOglas(@RequestParam(name = "naziv") String naziv,
+                                   @RequestParam(name = "datum") String datum,
+                                   @RequestParam(name = "kategorija") String kategorija,
+                                  @RequestParam(name = "podkategorija") String podkategorija,
+                                   @RequestParam(name = "plata") int plata,
+                                   @RequestParam(name = "slika") String slika,
+                                   @RequestParam(name = "tekst") String tekst,
+                                   @RequestParam(name = "remote") boolean remote,
+                                  @RequestParam(name = "token") String token
+                                  )
+    {
+        Baza baza=new Baza();
+        int idPoslodavca=baza.TokenToId(token);
+        Date date1=Date.valueOf(datum);
+        Oglas oglas=new Oglas(naziv,idPoslodavca,date1,kategorija,podkategorija,plata,slika,tekst,remote);
+
+
+        boolean uspeh = false;
+        uspeh = baza.postOglas(token,oglas);
+
+        return uspeh;
+    }
+
+
+
 }

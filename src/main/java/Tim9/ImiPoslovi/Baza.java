@@ -1071,6 +1071,87 @@ public class Baza {
         return null;
     }
 
+    public ArrayList<String> listKat(){
+        String sql1="SELECT * FROM `kategorije`;";
+        try{
+            PreparedStatement ps=conn.prepareStatement(sql1);
+            ResultSet rs=ps.executeQuery();
+            ArrayList<String> ret=new ArrayList<>(50);
+            if(!rs.first())
+                return null;
+            else
+                rs.previous();
+            while(rs.next()){
+                String tmp=rs.getString("Naziv");
+                ret.add(tmp);
+            }
+            return ret;
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<String> listPodKat(String kat){
+        String sql1="SELECT * FROM `kategorije` WHERE `Naziv`=?;";
+        try{
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setString(1,String.valueOf(kat));
+            ResultSet rs1=ps1.executeQuery();
+            int idkat;
+            if(!rs1.first())
+                return null;
+            else
+                idkat=rs1.getInt("Id");
+            String sql2="SELECT * FROM `podkategorije` WHERE `IdKategorije`=?;";
+            PreparedStatement ps2=conn.prepareStatement(sql2);
+            ps2.setInt(1,idkat);
+            ResultSet rs2=ps2.executeQuery();
+            if(!rs2.first())
+                return null;
+            else
+                rs2.previous();
+            ArrayList<String> ret=new ArrayList<>(50);
+            while(rs2.next()){
+                String tmp=rs2.getString("Naziv");
+                ret.add(tmp);
+            }
+            return ret;
+
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<Oglas> pretOglase(String naziv,String kat,String podkat){
+        ArrayList<Oglas> svi=sviOglasi();
+        ArrayList<Oglas> filtered=new ArrayList<>(50);
+        if(svi==null)
+            return null;
+        Pattern patNaziv=Pattern.compile(naziv,Pattern.CASE_INSENSITIVE);
+        Pattern patKat=Pattern.compile(kat,Pattern.CASE_INSENSITIVE);
+        Pattern patPodKat=Pattern.compile(podkat,Pattern.CASE_INSENSITIVE);
+        for (Oglas ogl:svi) {
+            Matcher matchNaziv=patNaziv.matcher(ogl.getNaziv());
+            Matcher matchKat=patKat.matcher(ogl.getKategorija());
+            Matcher matchPodKat=patPodKat.matcher(ogl.getPodKategorije());
+            if(naziv=="" || matchNaziv.find()){
+                if(kat=="Svi" || matchKat.find()){
+                    if(podkat=="Svi" || matchPodKat.find()){
+                        filtered.add(ogl);
+                    }
+                }
+            }
+        }
+        if(filtered.isEmpty())
+            return null;
+
+        return filtered;
+    }
+
 
 }
 

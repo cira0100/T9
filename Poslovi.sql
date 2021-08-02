@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 22, 2021 at 11:20 AM
+-- Generation Time: Aug 02, 2021 at 08:16 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `glavna` (
   `Type` int(11) NOT NULL,
   `Token` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `glavna`
@@ -70,8 +70,15 @@ INSERT INTO `glavna` (`Id`, `Username`, `Password`, `Mail`, `Type`, `Token`) VAL
 (30, 'Mika', '$2a$10$Cx62qG/7VxzaFIg0JaQfROcfLuI7ivtC4PpAQP6oEXgORU1JET/jC', 'mika@gmail.com', 1, 'Bi53L2iDzMw4Wta0sPJgj534zfCkvpbY'),
 (31, 'Aca', '$2a$10$8TWsf5c5rF2XlfLgjz88aOrGUh6XHovmh3AS4Y5oR2vZH8zqgVPvu', 'aca@gmail.com', 1, 'BlqtgP1rMn3ufgFv1i3b5aVWxgVYgz9A'),
 (32, 'Cira', '$2a$10$iLAZPbEe.gdKPprZ5Hcb9u8C0cPTzft9wVDtQ4WzmIGRu0eG3BYKa', 'ciraboxkg@gmail.com', 2, 'dSa4fBef58WUTHU6wEA5t8hpD2AKP7zq'),
-(33, 'fdsfsdfsd', '$2a$10$2nrBDETJpvMtpSFSWAvcmOCgEpJEHc.O4Jl.Hem7TT/i.lFQhYHEi', 'fsdfdsfsddf@gmail.com', 1, 'cjMg05pxiJborH12oat0PGPp9Ydl5p7f'),
-(34, 'hfghfghfghfg', '$2a$10$lbrEzviwg12LJl/wEBXWe.BYFDhJ03pvWLebp14Ux8LJXV1Om1BUK', 'hgfhfg@gmail.com', 2, 'zckhzBBbGqumpvgHvdIV9p9g6bbzbahq');
+(45, 'Petar123', '$2a$10$R9OdPq0cqOLd1QyoyDvcz.Gyl1byDXU46vkIjcXFigQgqxMSrqbb6', 'cifdsraboxkg@gmfdsail.com', 2, 'Pmk39og3arFoOhznAyES9hq04fz6ec6z'),
+(46, 'Mika123', '$2a$10$3ScbtGHGAqb4T2AZcxVmt.rpkyC6ZUH90/YFYzjX7VLgOjbnMpe8i', 'ciradsaboxkg@gmdasail.com', 1, 'rKDieiYP78ijdj7AcTy34D9yVB0lcf80'),
+(47, 'Lazar', '$2a$10$yarY8dMT9bg6iitZfjopGuVyFhchzb75eV20IndHEs4OxBk8Nj2fK', 'cirabodsadasxkg@gmail.com', 2, '9lm8w4Fh6fuBm4tngbXlqxIMx9r9zA67'),
+(48, 'Peraaaaa', '$2a$10$VLmN2Pq3P7N7ai3ULwva1OB94crnvkLsoBaPf9IaGcPSBJRl/gh3C', 'ciradsadasdasboxkg@gmail.com', 2, '7282Z5pm7xFoD5waeBee3yj9d5f9Rhrw'),
+(49, 'gdfgdfgdf', '$2a$10$6kGDK/8r7EpWW3rVY9LTUe/SlmCUACQGjp0Hy4DSX1oSog0/jrCOm', 'cirafdsfdsboxkg@gmail.com', 2, '52rWWbXYBQCXK4vwbg6y9sfxdhj8mRv9'),
+(50, 'hgfhfghfg', '$2a$10$t9wdL4ct4cLHu31RejbBSu2csYWFhpBf5fF9G8JisgeY/yBE9eHsi', 'cirahgfhfgfghboxkg@gmail.com', 2, 'qOgvNSf0AfFyVv1gcVa80kXEtsCgAv2C'),
+(51, 'fsdfsdfsd', '$2a$10$3vlRBhrGQLqL.i.aqemQBuDl8ZnHwzxyW.nT4jvDsXAWr6308FsQ.', 'cirabfdsfsdoxkg@gmail.com', 2, 'rJu067h9FFE7xAiIRjfV1ntRQawtr0Zv'),
+(52, 'hhfghfg', '$2a$10$H4dcjkeiSEyFlaZVQ5Vvv.YeXJs/riXEAE4a4PYPcZEPgXhOSrECu', 'cirabhgfhfgoxkg@gmail.com', 2, 'j90ilp6r5qWvCv4bwt5Y3mkYbF5n9RLf'),
+(53, 'hgfhghgfhfgf', '$2a$10$M37YMRWIe5GN0x9kt0H/B.tEVSjxygDc3tVW52a86zEj/tQDrhqxe', 'cirahfghgfboxkg@gmail.com', 1, 'dxmVK39f7D23T8e1kE3g9ws8S66cLAcS');
 
 -- --------------------------------------------------------
 
@@ -84,7 +91,18 @@ CREATE TABLE IF NOT EXISTS `kategorije` (
   `Id` int(11) NOT NULL AUTO_INCREMENT,
   `Naziv` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `kategorije`
+--
+
+INSERT INTO `kategorije` (`Id`, `Naziv`) VALUES
+(1, 'Administration'),
+(2, 'Animals'),
+(3, 'Computing and ICT'),
+(4, 'Construction'),
+(5, 'Design, arts');
 
 -- --------------------------------------------------------
 
@@ -167,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `oglas` (
 INSERT INTO `oglas` (`Id`, `Naziv`, `IdPoslodavca`, `Datum-Postavljanja`, `Datum-Isteka`, `Lajkovi`, `Posete`, `Kategorija`, `PodKategorije`, `Plata`, `Slika`, `Tekst`, `Remote`) VALUES
 (1, 'Programer', 28, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 1000, 'Slika', 'Veoma dobar oglas', 0),
 (2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0),
-(3, 'Programer', 29, '2021-07-20', '2021-07-30', 0, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1);
+(3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1);
 
 -- --------------------------------------------------------
 
@@ -181,6 +199,27 @@ CREATE TABLE IF NOT EXISTS `podkategorije` (
   `Naziv` varchar(30) COLLATE utf8mb4_bin NOT NULL,
   KEY `IdKategorije` (`IdKategorije`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `podkategorije`
+--
+
+INSERT INTO `podkategorije` (`IdKategorije`, `Naziv`) VALUES
+(1, 'Administrative assistant'),
+(1, ' Car rental agent'),
+(1, 'Compliance officer'),
+(2, 'Agricultural consultant'),
+(2, 'Animal technician'),
+(2, 'Dog handler'),
+(3, 'App developer'),
+(3, 'Big data engineer'),
+(3, 'Database administrator'),
+(4, 'Architect'),
+(4, 'Bricklayer'),
+(4, ' Building technician'),
+(5, 'Animator'),
+(5, 'Graphic designer'),
+(5, 'Illustrator');
 
 -- --------------------------------------------------------
 
@@ -206,7 +245,13 @@ INSERT INTO `poslodavac` (`Id`, `Naziv`, `Adresa`, `Slika`, `Ocena`) VALUES
 (28, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
 (29, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
 (32, 'Old', 'dsadasdas', 'C:\\fakepath\\pom.xml', NULL),
-(34, 'gfdgfdgdf', 'gdfgdfgfd', 'C:\\fakepath\\42 perfect clears IN A ROW! Jstris PC mode.mp4', NULL);
+(45, 'fsdfsd', 'fdssdf', 'Petar123.', NULL),
+(47, 'dsdas', 'dsadsa', 'Lazar.png', NULL),
+(48, 'dsadsa', 'dsadsa', 'Peraaaaa.png', NULL),
+(49, 'fdsfsd', 'fsdfsdfds', 'gdfgdfgdf.mkv', NULL),
+(50, 'hfghfg', 'hgfhfg', 'hgfhfghfg.png', NULL),
+(51, 'fdsfds', 'fdsfds', 'fsdfsdfsd.mkv', NULL),
+(52, 'hgfhfg', 'hgfhfg', 'hhfghfg.png', NULL);
 
 -- --------------------------------------------------------
 
@@ -256,7 +301,8 @@ CREATE TABLE IF NOT EXISTS `radnik` (
 INSERT INTO `radnik` (`Id`, `Ime`, `Prezime`, `Date`, `Slika`) VALUES
 (30, 'Mika', 'Mikic', '2000-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
 (31, 'Aca', 'Acic', '2001-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
-(33, 'gfdgfdg', 'gdfgdf', '2000-10-10', 'C:\\fakepath\\pom.xml');
+(46, 'dsadas', 'dsadas', '2000-10-10', 'Mika123.png'),
+(53, 'hgfhfg', 'hghfg', '2000-02-02', 'hgfhghgfhfgf.png');
 
 --
 -- Constraints for dumped tables

@@ -30,6 +30,7 @@ function login(){
         {
         alert(text);
         document.cookie=text;
+        preusmeriLogin(text);
         }
 
 
@@ -45,6 +46,38 @@ function login(){
                             +' </div>';
     }
 
+}
+function preusmeriLogin(token){
+    fetch("/tokenTotype?token="+token)
+    .then(function(response){
+    response.text().then(function(tip){
+        if(tip==-1){
+        alertHolder.innerHTML='<div class="alert alert-dismissible alert-danger">'
+                                    + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>'
+                                    +  '<strong>Greska!!!</strong>Pogresan Login'
+                                    '</div>';
+        }else
+        {
+            alert(tip);
+            if(tip==1)
+            {
+                document.location.href = '/radnikIndex';
+                
+            }else if(tip==2){
+                document.location.href = '/poslodavacIndex';
+                
+            }else if(tip==3){
+                document.location.href = '/adminIndex';
+                
+            }
+        
+        }
+
+
+    });
+
+
+    })
 }
 
 function loginValidation(username,password){
@@ -70,8 +103,9 @@ function Registruj(Id){
         var uspeh='<div class="alert alert-dismissible alert-success">'
                                                                        +'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>'
                                                                        +'<strong>Uspesno ste se registrovali!</strong> '
-                                                                       +'</div>';                                       
-         var poruka=testPoslodavac(username,password,email,naziv,adresa,slika);
+                                                                       +'</div>';      
+        var slika1=document.getElementById("InputSlika1").value;
+         var poruka=testPoslodavac(username,password,email,naziv,adresa,slika1);
             if(poruka===""){
             fetch("/registrujPoslodavca?username="+username+"&password="+password+"&mail="+email+"&naziv="+naziv+"&adresa="
             +adresa+"&slika="+slika)
@@ -119,8 +153,9 @@ function Registruj(Id){
         var uspeh='<div class="alert alert-dismissible alert-success">'
                                                                        +'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>'
                                                                        +'<strong>Uspesno ste se registrovali!</strong> '
-                                                                       +'</div>';                                       
-         var poruka=testRadnik(username,password,email,ime,prezime,date,slika);
+                                                                       +'</div>';
+        var slika1=document.getElementById("InputSlika1").value;
+         var poruka=testRadnik(username,password,email,ime,prezime,date,slika1);
          
             if(poruka===""){
             fetch("/registrujRadnika?username="+username+"&password="+password+"&mail="+email+"&ime="+ime+"&prezime="+prezime+"&date="+date
@@ -190,12 +225,14 @@ function testPoslodavac(username,password,email,naziv,adresa,slika){
         {
             message="Slika ne sme biti prazana";
         }
+        else{
         var file=document.getElementById("InputSlika1").files[0];
         var  fileType = file['type'];
         var validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
         if (!validImageTypes.includes(fileType)) {
             message="Slika mora biti gif,jpeg ili png";
         }
+    }
         if(message==="")
         message=proveraVelicineFajla(document.getElementById("InputSlika1").files[0].size);
         
@@ -231,13 +268,14 @@ function testRadnik(username,password,email,ime,prezime,date,slika){
         else if(slika==="")
         {
             message="Slika ne sme biti prazana";
-        }
+        }else{
         var file=document.getElementById("InputSlika").files[0];
         var  fileType = file['type'];
         var validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
         if (!validImageTypes.includes(fileType)) {
             message="Slika mora biti gif,jpeg ili png";
         }
+    }
         if(message==="")
         message=proveraVelicineFajla(document.getElementById("InputSlika").files[0].size);
         

@@ -23,7 +23,17 @@ public class PageController {
 
         return "index";
     }
+    @GetMapping("/listaPoslodavaca")
+    public String listaPoslodavaca(Model model){
+        Baza baza=new Baza();
+        ArrayList<Poslodavac> poslodavci=baza.traziPoslodavca("");
 
+        model.addAttribute("poslodavci",poslodavci);
+
+
+
+        return "ListaPoslodavaca";
+    }
 
 
 
@@ -58,10 +68,6 @@ public class PageController {
     @GetMapping("/dodajAdmina")
     public String dodajAdmina(){
         return "DodajAdmina";
-    }
-    @GetMapping("/listaPoslodavaca")
-    public String listaPoslodavaca(){
-        return "ListaPoslodavaca";
     }
     @GetMapping("/listaPoslodavacaRadnik")
     public String listaPoslodavacaRadnik(){

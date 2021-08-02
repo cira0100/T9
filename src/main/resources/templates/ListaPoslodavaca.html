@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -53,117 +53,17 @@
 
 
 
-            <div class="card">
-                <h5 class="card-header">
-                    Card title
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
+            <th:block th:each="poslodavac:${poslodavci}">
+                <div class="card">
+                    <img th:src="@{#}"/>
 
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
+                    <h5 class="card-header" th:text="${poslodavac.naziv}"/>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${poslodavac.adresa}" />
+                    </div>
+                    <div class="card-footer" th:text="${poslodavac.ocena}" />
                 </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
-
-            <div class="card">
-                <h5 class="card-header">
-                    Card 2
-                </h5>
-                <div class="card-body">
-                    <p class="card-text">
-                        Card content
-                    </p>
-                </div>
-                <div class="card-footer">
-                    Card footer
-                </div>
-            </div>
+            </th:block>
 
 
 
