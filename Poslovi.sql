@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 02, 2021 at 08:16 AM
+-- Generation Time: Aug 03, 2021 at 09:50 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -156,6 +156,21 @@ INSERT INTO `lajkovioglasa` (`Id`, `IdOglasa`, `IdRadnika`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `ocene`
+--
+
+DROP TABLE IF EXISTS `ocene`;
+CREATE TABLE IF NOT EXISTS `ocene` (
+  `IdRadnika` int(11) NOT NULL,
+  `IdPoslodavca` int(11) NOT NULL,
+  `Ocena` int(11) NOT NULL,
+  KEY `IdPoslodavca` (`IdPoslodavca`),
+  KEY `IdRadnika` (`IdRadnika`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oglas`
 --
 
@@ -176,7 +191,7 @@ CREATE TABLE IF NOT EXISTS `oglas` (
   `Remote` tinyint(1) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `IdPoslodavca` (`IdPoslodavca`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `oglas`
@@ -185,7 +200,8 @@ CREATE TABLE IF NOT EXISTS `oglas` (
 INSERT INTO `oglas` (`Id`, `Naziv`, `IdPoslodavca`, `Datum-Postavljanja`, `Datum-Isteka`, `Lajkovi`, `Posete`, `Kategorija`, `PodKategorije`, `Plata`, `Slika`, `Tekst`, `Remote`) VALUES
 (1, 'Programer', 28, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 1000, 'Slika', 'Veoma dobar oglas', 0),
 (2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0),
-(3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1);
+(3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1),
+(8, 'testoglas1', 47, '2021-07-18', NULL, 0, 0, 'Administration', 'Administrative assistant', 10000, 'adasdasdasd', 'adasdasdasdas', 1);
 
 -- --------------------------------------------------------
 
@@ -327,6 +343,13 @@ ALTER TABLE `komentari`
 ALTER TABLE `lajkovioglasa`
   ADD CONSTRAINT `LajkoviOglasa_ibfk_1` FOREIGN KEY (`IdOglasa`) REFERENCES `oglas` (`Id`),
   ADD CONSTRAINT `LajkoviOglasa_ibfk_2` FOREIGN KEY (`IdRadnika`) REFERENCES `radnik` (`Id`);
+
+--
+-- Constraints for table `ocene`
+--
+ALTER TABLE `ocene`
+  ADD CONSTRAINT `ocene_ibfk_1` FOREIGN KEY (`IdPoslodavca`) REFERENCES `poslodavac` (`Id`),
+  ADD CONSTRAINT `ocene_ibfk_2` FOREIGN KEY (`IdRadnika`) REFERENCES `radnik` (`Id`);
 
 --
 -- Constraints for table `oglas`

@@ -57,7 +57,7 @@
 
             <th:block th:each="poslodavac:${poslodavci}">
                 <div class="card">
-                    <img th:src="@{#}"/>
+                    <img width="120" height="120" th:src="'data:image/png;base64,' + ${poslodavac.slika}" />
 
                     <h5 class="card-header" th:text="${poslodavac.naziv}"/>
                     <div class="card-body">
