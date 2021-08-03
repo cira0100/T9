@@ -10,7 +10,7 @@
     <link href="css/css.css" rel="stylesheet">
     <title>Home</title>
   </head>
-  <body>
+  <body onload="getPodKategorije();">
 
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -27,7 +27,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Poslodavci</a>
+          <a class="nav-link" href="/listaPoslodavaca">Poslodavci</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/login1">Log In</a>
@@ -36,16 +36,20 @@
           <a class="nav-link" href="/register1">Sign Up</a>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-sm-4" type="text" placeholder="Search">
-        <select class="form-select" aria-label="Default select example" id="KategorijeSelect">
+      <div class="d-flex">
+        <input class="form-control me-sm-4" type="text" placeholder="Search" id="pretragaText">
+        <select class="form-select" aria-label="Default select example" id="KategorijeSelect" onchange="getPodKategorije();">
+          <option>Svi</option>
+          <th:block th:each="kategorija:${kategorije}">
+            <option th:text="${kategorija}"/>
+          </th:block>
 
         </select>
         <select class="form-select" aria-label="Default select example" id="PodKategorijeSelect">
 
         </select>
-        <button class="btn btn-success my-2 my-sm-0" type="submit">Pretraga</button>
-      </form>
+        <button class="btn btn-success my-2 my-sm-0" type="button" onclick="pretraga();">Pretraga</button>
+      </div>
     </div>
   </div>
 </nav>
@@ -59,13 +63,13 @@
 
 
         <th:block th:each="oglas:${oglasi}">
-        <div class="card">
-          <h5 class="card-header" th:text="${oglas.naziv}"/>
-          <div class="card-body">
-            <p class="card-text" th:text="${oglas.tekst}" />
+          <div class="card">
+            <h5 class="card-header" th:text="${oglas.naziv}"/>
+            <div class="card-body">
+              <p class="card-text" th:text="${oglas.tekst}" />
+            </div>
+            <div class="card-footer" th:text="${oglas.remote}" />
           </div>
-          <div class="card-footer" th:text="${oglas.remote}" />
-        </div>
         </th:block>
 
 
@@ -115,6 +119,6 @@
 	-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/bootstrap.bundle.js" ></script>
-
+  <script src="js/index.js" ></script>
   </body>
 </html>

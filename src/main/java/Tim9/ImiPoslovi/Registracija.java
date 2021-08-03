@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 @RestController
@@ -95,6 +96,20 @@ public class Registracija {
 
         return uspeh;
     }
+    @GetMapping("/vratiTip")
+    public int vratiTip(@RequestParam(name = "token") String token
+    ){
+        Baza baza=new Baza();
+        int id=baza.TokenToId(token);
+        return baza.vratiType(id);
+    }
+    @GetMapping("/getPodKategorije")
+    public ArrayList<String> getPodKategorije(@RequestParam(name = "kategorija") String kategorija
+    ){
+        Baza baza=new Baza();
+        return baza.listPodKat(kategorija);
+    }
+
 
 
 

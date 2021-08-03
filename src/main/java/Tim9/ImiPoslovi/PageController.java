@@ -3,6 +3,7 @@ package Tim9.ImiPoslovi;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 
@@ -16,20 +17,38 @@ public class PageController {
         ArrayList<Oglas> oglasi =baza.sviOglasi();
 
     model.addAttribute("oglasi",oglasi);
-
+    model.addAttribute("kategorije",baza.listKat());
 
 
 
 
         return "index";
     }
+    @GetMapping("/trazi")
+    public String home(@RequestParam(name = "pretraga") String pretraga,
+                       @RequestParam(name = "kategorija") String kategorija,
+                       @RequestParam(name = "podkategorija") String podkategorija,
+                       Model model){
+        Baza baza=new Baza();
+        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija);
+
+        model.addAttribute("oglasi",oglasi);
+        model.addAttribute("kategorije",baza.listKat());
+
+
+
+
+        return "index";
+    }
+
+
+
     @GetMapping("/listaPoslodavaca")
     public String listaPoslodavaca(Model model){
         Baza baza=new Baza();
         ArrayList<Poslodavac> poslodavci=baza.traziPoslodavca("");
 
         model.addAttribute("poslodavci",poslodavci);
-
 
 
         return "ListaPoslodavaca";
