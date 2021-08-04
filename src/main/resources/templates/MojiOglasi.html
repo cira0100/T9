@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -22,20 +22,20 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Pocetna
+          <a class="nav-link" href="/poslodavacIndex">Pocetna
 
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Moji Oglasi</a>
+          <a class="nav-link active" href="javascript:mojiOglasi();">Moji Oglasi</a>
           <span class="visually-hidden">(current)</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Dodaj Oglas</a>
+          <a class="nav-link" href="/dodajOglas">Dodaj Oglas</a>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Log Out</a>
+          <a class="nav-link" href="javascript:logOut();">Log Out</a>
         </li>
       </ul>
     </div>
@@ -51,124 +51,22 @@
 
     <div class="col-md-6" id="OglasWrapper">
 
+      <th:block th:each="oglas:${oglasi}">
+        <div class="card">
+          <h5 class="card-header" th:text="${oglas.naziv}"/>
+          <div class="card-body">
+            <p class="card-text" th:text="${oglas.tekst}" />
+          </div>
+          <div class="card-footer" th:text="${oglas.remote}" />
+        </div>
+      </th:block>
 
 
 
-      <div class="card">
-        <h5 class="card-header">
-          Card title
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
 
 
 
-    </div>
+
 
 
 

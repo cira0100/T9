@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -22,19 +22,19 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Pocetna
+          <a class="nav-link" href="/radnikIndex">Pocetna
 
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Poslodavci</a>
+          <a class="nav-link active" href="/listaPoslodavacaRadnik">Poslodavci</a>
           <span class="visually-hidden">(current)</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Moje Prijave</a>
+          <a class="nav-link" href="javascript:mojePrijave();">Moje Prijave</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Log Out</a>
+          <a class="nav-link" href="javascript:logOut();">Log Out</a>
         </li>
       </ul>
     </div>
@@ -50,122 +50,17 @@
 
     <div class="col-md-6" id="OglasWrapper">
 
+      <th:block th:each="poslodavac:${poslodavci}">
+        <div class="card">
+          <img width="120" height="120" th:src="'data:image/png;base64,' + ${poslodavac.slika}" />
 
-
-
-      <div class="card">
-        <h5 class="card-header">
-          Card title
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
+          <h5 class="card-header" th:text="${poslodavac.naziv}"/>
+          <div class="card-body">
+            <p class="card-text" th:text="${poslodavac.adresa}" />
+          </div>
+          <div class="card-footer" th:text="${poslodavac.ocena}" />
         </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-      <div class="card">
-        <h5 class="card-header">
-          Card 2
-        </h5>
-        <div class="card-body">
-          <p class="card-text">
-            Card content
-          </p>
-        </div>
-        <div class="card-footer">
-          Card footer
-        </div>
-      </div>
-
-
+      </th:block>
 
     </div>
 
@@ -210,6 +105,6 @@
 -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js" ></script>
-
+<script src="js/radnik.js" ></script>
 </body>
 </html>

@@ -22,20 +22,20 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Pocetna
+          <a class="nav-link" href="/adminIndex">Pocetna
 
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Lista Korisnika</a>
+          <a class="nav-link" href="javascript:ListaKorisnika();">Lista Korisnika</a>
 
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Dodaj Admina</a>
+          <a class="nav-link active" href="/dodajAdmina">Dodaj Admina</a>
           <span class="visually-hidden">(current)</span>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Log Out</a>
+          <a class="nav-link" href="javascript:logOut();">Log Out</a>
         </li>
       </ul>
     </div>
@@ -63,7 +63,7 @@
         </div>
         <br>
         <p class="bs-component">
-          <button type="button" onclick="dodaj();" class="btn btn-primary " style="margin-top:5px;">Dodaj Admina</button>
+          <button type="button" onclick="registruj();" class="btn btn-primary " style="margin-top:5px;">Dodaj Admina</button>
 
         </p>
         <div id ="alert_placeholder"></div>
@@ -112,6 +112,6 @@
 -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js" ></script>
-
+<script src="js/admin.js" ></script>
 </body>
 </html>
