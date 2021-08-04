@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 03, 2021 at 09:50 AM
+-- Generation Time: Aug 04, 2021 at 10:44 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`Id`, `Ime`, `Prezime`) VALUES
-(27, 'Pera', 'Peric');
+(27, 'Pera', 'Peric'),
+(54, 'Zoran', 'Spasojevic');
 
 -- --------------------------------------------------------
 
@@ -57,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `glavna` (
   `Type` int(11) NOT NULL,
   `Token` varchar(32) COLLATE utf8mb4_bin NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `glavna`
@@ -78,7 +79,9 @@ INSERT INTO `glavna` (`Id`, `Username`, `Password`, `Mail`, `Type`, `Token`) VAL
 (50, 'hgfhfghfg', '$2a$10$t9wdL4ct4cLHu31RejbBSu2csYWFhpBf5fF9G8JisgeY/yBE9eHsi', 'cirahgfhfgfghboxkg@gmail.com', 2, 'qOgvNSf0AfFyVv1gcVa80kXEtsCgAv2C'),
 (51, 'fsdfsdfsd', '$2a$10$3vlRBhrGQLqL.i.aqemQBuDl8ZnHwzxyW.nT4jvDsXAWr6308FsQ.', 'cirabfdsfsdoxkg@gmail.com', 2, 'rJu067h9FFE7xAiIRjfV1ntRQawtr0Zv'),
 (52, 'hhfghfg', '$2a$10$H4dcjkeiSEyFlaZVQ5Vvv.YeXJs/riXEAE4a4PYPcZEPgXhOSrECu', 'cirabhgfhfgoxkg@gmail.com', 2, 'j90ilp6r5qWvCv4bwt5Y3mkYbF5n9RLf'),
-(53, 'hgfhghgfhfgf', '$2a$10$M37YMRWIe5GN0x9kt0H/B.tEVSjxygDc3tVW52a86zEj/tQDrhqxe', 'cirahfghgfboxkg@gmail.com', 1, 'dxmVK39f7D23T8e1kE3g9ws8S66cLAcS');
+(53, 'hgfhghgfhfgf', '$2a$10$M37YMRWIe5GN0x9kt0H/B.tEVSjxygDc3tVW52a86zEj/tQDrhqxe', 'cirahfghgfboxkg@gmail.com', 1, 'dxmVK39f7D23T8e1kE3g9ws8S66cLAcS'),
+(54, 'Acaa', '$2a$10$Nw3teVnv4SPhOQ9IPAymsuPewBigRc9gmg1nynFXxjMqDg0bPG6Xm', 'cirabdsaoxkg@gmail.com', 3, 'yTpuV1URiWkqrculJDxmEQo9WppkagAf'),
+(55, 'TESTTTTTTTTTTTTTTTT', '$2a$10$UrjkXlCTpsU6tRey7hyfFezx6vlKKHWvDo3WD/xvBWVKaPTQ/hRYa', 'cirabTESTTTTTTTTTTTTTTTToxkg@gmail.com', 2, 'ySACd2aGTy1rygvM06tn3ocqdRKiofNh');
 
 -- --------------------------------------------------------
 
@@ -191,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `oglas` (
   `Remote` tinyint(1) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `IdPoslodavca` (`IdPoslodavca`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `oglas`
@@ -201,7 +204,10 @@ INSERT INTO `oglas` (`Id`, `Naziv`, `IdPoslodavca`, `Datum-Postavljanja`, `Datum
 (1, 'Programer', 28, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 1000, 'Slika', 'Veoma dobar oglas', 0),
 (2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0),
 (3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1),
-(8, 'testoglas1', 47, '2021-07-18', NULL, 0, 0, 'Administration', 'Administrative assistant', 10000, 'adasdasdasd', 'adasdasdasdas', 1);
+(8, 'testoglas1', 47, '2021-07-18', NULL, 0, 0, 'Administration', 'Administrative assistant', 10000, 'adasdasdasd', 'adasdasdasdas', 1),
+(9, 'dasda', 32, '2021-08-04', '2000-11-11', 0, 0, 'Administration', 'Administrative assistant', 10, 'micwIwpQKC5TS3Ki.png', 'gdfgdfgdf', 1),
+(10, 'Programer JOB', 32, '2021-08-04', '2022-10-10', 0, 0, 'Animals', 'Animal technician', 1000, 'voAo5ZyzqLjAlu52.png', 'Handle animals like Bane', 1),
+(11, 'dsadas', 32, '2021-08-04', '2022-11-11', 0, 0, 'Administration', 'Administrative assistant', -1, 'AVHBmOEWekzBhTES.png', 'dasdasdas', 0);
 
 -- --------------------------------------------------------
 
@@ -267,7 +273,8 @@ INSERT INTO `poslodavac` (`Id`, `Naziv`, `Adresa`, `Slika`, `Ocena`) VALUES
 (49, 'fdsfsd', 'fsdfsdfds', 'gdfgdfgdf.mkv', NULL),
 (50, 'hfghfg', 'hgfhfg', 'hgfhfghfg.png', NULL),
 (51, 'fdsfds', 'fdsfds', 'fsdfsdfsd.mkv', NULL),
-(52, 'hgfhfg', 'hgfhfg', 'hhfghfg.png', NULL);
+(52, 'hgfhfg', 'hgfhfg', 'hhfghfg.png', NULL),
+(55, 'TESTTTTTTTTTTTTTTTTsa', 'TESTTTTTTTTTTTTTTTT', 'TESTTTTTTTTTTTTTTTT.png', NULL);
 
 -- --------------------------------------------------------
 
