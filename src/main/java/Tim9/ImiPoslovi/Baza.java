@@ -1158,7 +1158,7 @@ public class Baza {
         return filtered;
     }
 
-    private String encoder(String imagePath) {
+    public String encoder(String imagePath) {
         String base64Image = "";
         File file = new File(imagePath);
         try (FileInputStream imageInFile = new FileInputStream(file)) {
@@ -1172,6 +1172,45 @@ public class Baza {
             System.out.println("Exception while reading the Image " + ioe);
         }
         return base64Image;
+    }
+
+
+    public Oglas vratiOglas(int id){
+        sql="SELECT * FROM `oglas` WHERE Id = ? ;";
+        try{
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.first()) {
+                rs.previous();
+            } else {
+                return null;
+            }
+            Oglas temp=null;
+            while(rs.next()){
+                int IdOglasa= rs.getInt("Id");
+                String Naziv= rs.getString("Naziv");
+                int idPoslodavca= rs.getInt("IdPoslodavca");
+                Date DatumPostavljanja= rs.getDate("Datum-Postavljanja");
+                Date DatumIsteka= rs.getDate("Datum-Isteka");
+                int Lajkovi= rs.getInt("Lajkovi");
+                int Posete= rs.getInt("Posete");
+                String Kategorija= rs.getString("Kategorija");
+                String PodLategorije= rs.getString("PodKategorije");
+                int plata = rs.getInt("plata");
+                String Slika = rs.getString("Slika");
+                String Tekst = rs.getString("Tekst");
+                boolean Remote = rs.getBoolean("Remote");
+
+                temp= new Oglas(IdOglasa,Naziv,idPoslodavca,DatumPostavljanja,DatumIsteka,Lajkovi,Posete,Kategorija,PodLategorije,plata,Slika,Tekst,Remote);
+
+            }
+            return temp;
+        }
+        catch (SQLException throwables){
+            throwables.printStackTrace();
+        }
+        return null;
     }
 
 }

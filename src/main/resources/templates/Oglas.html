@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -22,7 +22,7 @@
     <div class="navbar-collapse collapse" id="navbarColor01" style="">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Pocetna
+          <a class="nav-link" href="/">Nazad
           </a>
         </li>
       </ul>
@@ -39,30 +39,28 @@
 
 
       <div class="card mb-6" style="margin-top:20px;">
-        <h3 class="card-header" style="border:1px solid #009cdc;">Naslov</h3>
-        <svg xmlns="http://www.w3.org/2000/svg" class="d-block user-select-none" width="100%" height="200" aria-label="Placeholder: Image cap" focusable="false" role="img" preserveAspectRatio="xMidYMid slice" viewBox="0 0 318 180" style="font-size:1.125rem;text-anchor:middle">
-          <rect width="100%" height="100%" fill="#868e96"></rect>
-          <text x="50%" y="50%" fill="#dee2e6" dy=".3em">Slika</text>
-        </svg>
+        <h3 class="card-header" style="border:1px solid #009cdc;" th:text="${naslov}" />
+        <div class="card-body" style="border:1px solid #009cdc;">ID: <span id="IDOglasa" th:text="${idOglasa}"/></div>
+          <img style="border:1px solid #009cdc;" width="100%" height="200" th:src="'data:image/png;base64,' + ${slika}" />
+
         <div class="card-body" style="border:1px solid #009cdc;">
-          <button type="button" class="btn btn-warning">Like:<span> 0</span></button>
+          <button type="button" class="btn btn-warning" disabled>Like:<span th:text="${lajkovi}"/></button>
         </div>
         <div class="card-body" style="border:1px solid #009cdc;">
-          <p class="card-text">Opis</p>
+          <p class="card-text" th:text="${opis}"/>
         </div>
         <div class="card-body" style="border:1px solid #009cdc;">
-          <label class="form-label mt-4" for="CV" >CV</label>
-          <input type="file" class="form-control-file" id="CV">
-          <button type="button" class="btn btn-primary">Prijavi se</button>
+          <p class="card-text">Na daljinu: <span th:text="${remote}"/></p>
         </div>
         <ul class="list-group list-group-flush" style="border:1px solid #009cdc;">
-          <li class="list-group-item">Komentar 1</li>
-          <li class="list-group-item">Komentar 2</li>
-          <li class="list-group-item">Komentar 3</li>
+
+          <th:block th:each="komentar:${komentari}">
+            <li class="list-group-item" th:text="${komentar.s1}+' '+${komentar.s2}+' : '+${komentar.tekst}"/>
+
+          </th:block>
         </ul>
-        <div class="card-footer text-muted" style="border:1px solid #009cdc;">
-          2 days ago
-        </div>
+        <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum postavke: <span th:text="${datumPostavke}"/></div>
+        <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum isteka: <span th:text="${datumIsteka}"/></div>
       </div>
 
 

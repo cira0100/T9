@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Poslodavci</a>
+                    <a class="nav-link active" href="/listaPoslodavaca">Poslodavci</a>
                     <span class="visually-hidden">(current)</span>
                 </li>
                 <li class="nav-item">
@@ -37,6 +37,10 @@
                     <a class="nav-link" href="/register1">Sign Up</a>
                 </li>
             </ul>
+            <div class="d-flex">
+                <input class="form-control me-sm-4" type="text" placeholder="Search" id="pretragaText">
+                <button class="btn btn-success my-2 my-sm-0" type="button" onclick="pretragaPoslodavaca();">Pretraga</button>
+            </div>
         </div>
     </div>
 </nav>
@@ -112,6 +116,6 @@
 -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js" ></script>
-
+<script src="js/index.js" ></script>
 </body>
 </html>

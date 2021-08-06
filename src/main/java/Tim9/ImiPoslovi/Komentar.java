@@ -4,6 +4,7 @@ public class Komentar {
     private String s1;
     private String s2;
     private String tekst;
+    private int id;
 
     public int getId() {
         return id;
@@ -13,7 +14,7 @@ public class Komentar {
         this.id = id;
     }
 
-    private int id;
+
 
     public Komentar(String s1, String s2, String tekst,int id) {
         this.s1 = s1;

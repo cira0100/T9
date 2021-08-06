@@ -121,8 +121,105 @@ public class PageController {
 
 
     @GetMapping("/oglas")
-    public String oglas(){
+    public String oglas(Model model,
+                        @RequestParam(name = "idOglasa") int id){
+        Baza baza=new Baza();
+        Oglas oglas=baza.vratiOglas(id);
+        if(oglas==null)
+            return "404";
+
+        ArrayList<Komentar> komentari=baza.listKom(id);
+        model.addAttribute("naslov",oglas.getNaziv());
+        model.addAttribute("lajkovi",oglas.getLajkovi());
+        model.addAttribute("opis",oglas.getTekst());
+        model.addAttribute("remote",oglas.isRemote());
+        model.addAttribute("komentari",komentari);
+        model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
+        model.addAttribute("datumIsteka",oglas.getDatumIsteka());
+        model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
+
         return "Oglas";
+    }
+    @GetMapping("/oglasRadnik")
+    public String oglas(Model model,
+                        @RequestParam(name = "idOglasa") int id,
+                        @RequestParam(name = "token") String token){
+        Baza baza=new Baza();
+        Oglas oglas=baza.vratiOglas(id);
+        if(oglas==null)
+            return "404";
+
+        if(baza.vratiType(baza.TokenToId(token))!=1){
+            return "404";
+        }
+
+
+        ArrayList<Komentar> komentari=baza.listKom(id);
+        model.addAttribute("IdOglasa",oglas.getIdOglasa());
+        model.addAttribute("naslov",oglas.getNaziv());
+        model.addAttribute("lajkovi",oglas.getLajkovi());
+        model.addAttribute("opis",oglas.getTekst());
+        model.addAttribute("remote",oglas.isRemote());
+        model.addAttribute("komentari",komentari);
+        model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
+        model.addAttribute("datumIsteka",oglas.getDatumIsteka());
+        model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
+
+        return "OglasRadnik";
+    }
+    @GetMapping("/oglasPoslodavac")
+    public String oglasPoslodavac(Model model,
+                        @RequestParam(name = "idOglasa") int id,
+                        @RequestParam(name = "token") String token){
+        Baza baza=new Baza();
+        Oglas oglas=baza.vratiOglas(id);
+        if(oglas==null)
+            return "404";
+
+        if(baza.vratiType(baza.TokenToId(token))!=2){
+            return "404";
+        }
+
+
+        ArrayList<Komentar> komentari=baza.listKom(id);
+        model.addAttribute("IdOglasa",oglas.getIdOglasa());
+        model.addAttribute("naslov",oglas.getNaziv());
+        model.addAttribute("lajkovi",oglas.getLajkovi());
+        model.addAttribute("opis",oglas.getTekst());
+        model.addAttribute("remote",oglas.isRemote());
+        model.addAttribute("komentari",komentari);
+        model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
+        model.addAttribute("datumIsteka",oglas.getDatumIsteka());
+        model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
+
+        return "OglasPoslodavac";
+    }
+    @GetMapping("/oglasAdmin")
+    public String oglasAdmin(Model model,
+                                  @RequestParam(name = "idOglasa") int id,
+                                  @RequestParam(name = "token") String token){
+        Baza baza=new Baza();
+        Oglas oglas=baza.vratiOglas(id);
+        if(oglas==null)
+            return "404";
+
+        if(baza.vratiType(baza.TokenToId(token))!=3){
+            return "404";
+        }
+
+
+        ArrayList<Komentar> komentari=baza.listKom(id);
+        model.addAttribute("IdOglasa",oglas.getIdOglasa());
+        model.addAttribute("naslov",oglas.getNaziv());
+        model.addAttribute("lajkovi",oglas.getLajkovi());
+        model.addAttribute("opis",oglas.getTekst());
+        model.addAttribute("remote",oglas.isRemote());
+        model.addAttribute("komentari",komentari);
+        model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
+        model.addAttribute("datumIsteka",oglas.getDatumIsteka());
+        model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
+
+        return "OglasAdmin";
     }
 
 
@@ -216,6 +313,27 @@ public class PageController {
         return "MojePrijave";
     }
 
+    @GetMapping("/listaPoslodavacaTrazi")//editing
+    public String listaPoslodavaca(@RequestParam(name="pretraga") String pretraga, Model model){
+        Baza baza=new Baza();
+        ArrayList<Poslodavac> poslodavci=baza.traziPoslodavca(pretraga);
+
+        model.addAttribute("poslodavci",poslodavci);
+
+
+        return "ListaPoslodavaca";
+    }
+
+    @GetMapping("/listaPoslodavacaRadnikTrazi")
+    public String listaPoslodavacaRadnik(@RequestParam(name="pretraga") String pretraga,Model model){
+        Baza baza=new Baza();
+        ArrayList<Poslodavac> poslodavci=baza.traziPoslodavca(pretraga);
+
+        model.addAttribute("poslodavci",poslodavci);
+
+
+        return "ListaPoslodavacaRadnik";
+    }
 
 
 

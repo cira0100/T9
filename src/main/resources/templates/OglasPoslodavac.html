@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en" xmlns:th="">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/css.css" rel="stylesheet">
+    <title>Oglas</title>
+</head>
+<body>
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">ImiPoslovi</a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse" id="navbarColor01" style="">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/poslodavacIndex">Nazad
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="row align-items-center">
+    <div class="col-md-6 mx-auto" style="border:4px solid #593196;margin-top:150px;margin-bottom:200px;padding-bottom:15px;background-color:white;">
+
+
+
+
+        <div class="card mb-6" style="margin-top:20px;">
+            <h3 class="card-header" style="border:1px solid #009cdc;" th:text="${naslov}" />
+            <img style="border:1px solid #009cdc;" width="100%" height="200" th:src="'data:image/png;base64,' + ${slika}" />
+            <div class="card-body" style="border:1px solid #009cdc;">
+                <button type="button" class="btn btn-warning" disabled>Like:<span th:text="${lajkovi}"/></button>
+            </div>
+            <div class="card-body" style="border:1px solid #009cdc;">
+                <p class="card-text" th:text="${opis}"/>
+            </div>
+
+            <div class="card-body" style="border:1px solid #009cdc;">
+                <label for="Komentar" class="form-label mt-4">Komentar</label>
+                <textarea class="form-control" id="Komentar" rows="1"></textarea>
+                <button style="margin-top:5px;" type="button" class="btn btn-primary" th:attr="onclick=|PostKom('${IdOglasa}')|">Post Komentar</button>
+            </div>
+
+
+
+            <ul class="list-group list-group-flush" style="border:1px solid #009cdc;">
+
+                <th:block th:each="komentar:${komentari}">
+                    <li class="list-group-item" th:text="${komentar.s1}+' '+${komentar.s2}+' : '+${komentar.tekst}"/>
+
+                </th:block>
+            </ul>
+            <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum postavke: <span th:text="${datumPostavke}"/></div>
+            <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum isteka: <span th:text="${datumIsteka}"/></div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="page-footer fixed-bottom font-small bg-primary">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3" style="color:white;">© 2021 Copyright:
+        Ognjen Cirkovic & Branislav Radivojevic
+    </div>
+    <!-- Copyright -->
+
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Optional JavaScript
+-->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="js/bootstrap.bundle.js" ></script>
+
+</body>
+</html>

@@ -47,3 +47,8 @@ function pretraga(){
     }
     window.location="/trazi?pretraga="+pretraga+"&kategorija="+kategorija+"&podkategorija="+podkategorija;
 }
+
+function pretragaPoslodavaca(){
+    var pretraga=document.getElementById("pretragaText").value;
+    window.location="/listaPoslodavacaTrazi?pretraga="+pretraga;
+}

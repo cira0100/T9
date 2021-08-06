@@ -56,3 +56,9 @@ function logOut(){
 function mojePrijave(){
         window.location="/mojePrijave?token="+document.cookie;
     }
+
+function pretragaPoslodavaca(){
+
+    var pretraga=document.getElementById("pretragaText").value;
+    window.location="/listaPoslodavacaRadnikTrazi?pretraga="+pretraga;
+}
