@@ -466,7 +466,7 @@ public class Baza {
             String email=rs.getString("Mail");
 
 
-            EMailSender.SendEmail(email,Naziv,cv);
+            EMailSender.SendEmailAttachement(email,Naziv,cv);
 
             sql = "INSERT INTO `prijave`(IdOglasa,IdRadnika) VALUES(?,?)";
             ps = conn.prepareStatement(sql);

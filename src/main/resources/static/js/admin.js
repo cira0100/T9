@@ -131,3 +131,7 @@ function registruj(){
     document.cookie="-1";
     window.location="/";
     }
+    function posetiOglas(i){
+            var token=document.cookie;
+            window.location="/oglasAdmin?idOglasa="+i+"&token="+token;
+        }

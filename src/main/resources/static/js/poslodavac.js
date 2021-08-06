@@ -181,3 +181,7 @@ function proveraVelicineFajla(velicina){
         return "velicina mora biti manja od 10MB";
     return "";
 }
+function posetiOglas(i){
+    var token=document.cookie;
+    window.location="/oglasPoslodavac?idOglasa="+i+"&token="+token;
+}

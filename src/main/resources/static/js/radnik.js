@@ -62,3 +62,7 @@ function pretragaPoslodavaca(){
     var pretraga=document.getElementById("pretragaText").value;
     window.location="/listaPoslodavacaRadnikTrazi?pretraga="+pretraga;
 }
+function posetiOglas(i){
+    var token=document.cookie;
+    window.location="/oglasRadnik?idOglasa="+i+"&token="+token;
+}

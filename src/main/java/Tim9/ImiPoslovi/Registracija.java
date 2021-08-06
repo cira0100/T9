@@ -110,6 +110,44 @@ public class Registracija {
         return baza.listPodKat(kategorija);
     }
 
+    @GetMapping("/lajkujOglas")
+    public boolean lajkujOglas(@RequestParam(name = "token") String token,
+                                    @RequestParam(name = "idOgl") int idOgl
+    ){
+        boolean uspeh=false;
+
+        Baza baza=new Baza();
+        uspeh=baza.lajkDislajk(token,idOgl);
+        return uspeh;
+
+    }
+    @GetMapping("/postKom")
+    public boolean postKom(@RequestParam(name = "token") String token,
+                                    @RequestParam(name = "idOgl") int idOgl,
+                                    @RequestParam(name = "tekst") String tekst
+    ){
+        boolean uspeh=false;
+
+        Baza baza=new Baza();
+        uspeh=baza.postKom(token,idOgl,tekst);
+        return uspeh;
+
+    }
+
+    @GetMapping("/prijavaOglas")
+    public boolean prijavaOglas(@RequestParam(name = "token") String token,
+                           @RequestParam(name = "idOgl") int idOgl,
+                           @RequestParam(name = "tekst") String cv
+    ){
+        boolean uspeh=false;
+
+        Baza baza=new Baza();
+        uspeh=baza.prijaveMeNaOglas(token,cv,idOgl);
+        return uspeh;
+
+    }
+
+
 
 
 

@@ -52,3 +52,7 @@ function pretragaPoslodavaca(){
     var pretraga=document.getElementById("pretragaText").value;
     window.location="/listaPoslodavacaTrazi?pretraga="+pretraga;
 }
+function posetiOglas(i){
+    var token=document.cookie;
+    window.location="/oglas?idOglasa="+i;
+}
