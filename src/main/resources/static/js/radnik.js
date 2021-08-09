@@ -181,3 +181,41 @@ function PrijaviSe(id){
     }
     
 }
+
+function oceni(idpos){
+    alert(document.cookie+" "+idpos);
+    novaStranica=window.open('','','width=450, height=300');
+    novaStranica.document.write('<head><link href="css/bootstrap.css" rel="stylesheet"> <link href="css/css.css" rel="stylesheet"></head>')
+    novaStranica.document.write('<body><div class="d-flex justify-content-center">');
+
+
+    novaStranica.document.write('<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-top:30px;">');
+    novaStranica.document.write('<h5 class="card-header">Oceni Poslodavca:</h5>');
+    novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="true" onclick="setOcena(1)">');
+    novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio1">1</label>');
+    novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked=""  onclick="setOcena(2)">');
+    novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio2">2</label>');
+    novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" checked=""  onclick="setOcena(3)">');
+    novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio3">3</label>');
+    novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off" checked=""  onclick="setOcena(4)">');
+    novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio4">4</label>');
+    novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked=""  onclick="setOcena(5)">');
+    novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio5">5</label>');
+    novaStranica.document.write('</div></div>');
+    novaStranica.document.write('<div class="d-flex justify-content-center">');
+    novaStranica.document.write('<button class="btn btn-success my-2 my-sm-0" type="button" onclick="updateOcenu();">Potvrdi</button>');
+    novaStranica.document.write('<button class="btn btn-danger my-2 my-sm-0" type="button" onclick="closeOpenedWindow()">Otkazi</button>');
+    novaStranica.document.write('</div> <script src="js/bootstrap.bundle.js" ></script> <script src="js/radnik.js"></script> </body>');
+}
+function closeOpenedWindow() {
+  window.close();
+}
+function updateOcenu(){
+    console.log("Poslata ocena:"+ocena);
+}
+var ocena=5;
+function setOcena(i){
+    ocena=i;
+    console.log(ocena);
+}
+

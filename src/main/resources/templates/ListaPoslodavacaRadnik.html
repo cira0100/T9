@@ -61,6 +61,7 @@
           <h5 class="card-header" th:text="${poslodavac.naziv}"/>
           <div class="card-body">
             <p class="card-text" th:text="${poslodavac.adresa}" />
+            <button class="btn btn-success my-2 my-sm-0" type="button" th:attr="onclick=|oceni('${poslodavac.id}')|">Oceni</button>
           </div>
           <div class="card-footer" th:text="${poslodavac.ocena}" />
         </div>
