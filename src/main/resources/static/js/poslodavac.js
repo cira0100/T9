@@ -185,3 +185,52 @@ function posetiOglas(i){
     var token=document.cookie;
     window.location="/oglasPoslodavac?idOglasa="+i+"&token="+token;
 }
+
+function PostKom(id){
+    var TextArea=document.getElementById("Komentar").value;
+    
+    if(TextArea===""){
+        alert("Komentar ne sme biti prazan");
+    }else{
+        
+        fetch("/postKom?token="+document.cookie+"&idOgl="+id+"&tekst="+TextArea)
+                    .then(function(response){
+                    response.text().then(function(text){
+                        if(text=="false"){
+                        alert("Greska");
+                }
+                        else
+                        {
+                            window.location.reload();
+                        }
+
+
+                    });
+
+
+                    })
+        
+    }
+}
+
+function ObrisiOglas(id){
+    
+    fetch("/obrisiOglas?token="+document.cookie+"&idOgl="+id)
+                    .then(function(response){
+                    response.text().then(function(text){
+                        if(text=="false"){
+                        alert("Greska");
+                }
+                        else
+                        {
+                                window.location.reload();
+                        }
+
+
+                    });
+
+
+                    })
+    
+}
+

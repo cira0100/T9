@@ -68,6 +68,7 @@ public class EMailSender  {
              helper.setText("", true);
 
              javaMailSender.send(message);
+             (new File("files/"+fileToAttach)).delete();
 
          } catch (MessagingException e) {
              e.printStackTrace();

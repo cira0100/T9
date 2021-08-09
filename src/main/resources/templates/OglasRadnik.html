@@ -42,14 +42,14 @@
       <h3 class="card-header" style="border:1px solid #009cdc;" th:text="${naslov}" />
       <img style="border:1px solid #009cdc;" width="100%" height="200" th:src="'data:image/png;base64,' + ${slika}" />
       <div class="card-body" style="border:1px solid #009cdc;">
-        <button type="button" class="btn btn-warning" th:attr="onclick=|Lajkuj('${IdOglasa}')|">Like:<span th:text="${lajkovi}"/></button>
+        <button type="button" class="btn btn-warning" th:attr="onclick=|Lajkuj('${IdOglasa}')|">Like/Unlike:<span th:text="${lajkovi}"/></button>
       </div>
       <div class="card-body" style="border:1px solid #009cdc;">
         <p class="card-text" th:text="${opis}"/>
       </div>
       <div class="card-body" style="border:1px solid #009cdc;">
         <label class="form-label mt-4" for="CV" >CV</label>
-        <input type="file" class="form-control-file" id="CV">
+        <input type="file" class="form-control-file" accept="application/pdf" id="CV">
         <button type="button" class="btn btn-primary" th:attr="onclick=|PrijaviSe('${IdOglasa}')|">Prijavi se</button>
       </div>
       <div class="card-body" style="border:1px solid #009cdc;">
@@ -137,6 +137,7 @@
 -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js" ></script>
+<script src="js/radnik.js" ></script>
 
 </body>
 </html>

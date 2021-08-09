@@ -58,6 +58,8 @@
             <p class="card-text" th:text="${oglas.tekst}" />
           </div>
           <div class="card-footer" th:text="${oglas.remote}" />
+          <button type="button" class="btn btn-success" th:attr="onclick=|posetiOglas('${oglas.IdOglasa}')|">Otvori</button>
+          <button type="button" class="btn btn-danger" th:attr="onclick=|ObrisiOglas('${oglas.IdOglasa}')|">Obrisi Oglas</button>
         </div>
       </th:block>
 
@@ -74,7 +76,7 @@
     </div>
   </div>
 </div>
-
+</div>
 
 <footer class="page-footer fixed-bottom font-small bg-primary">
 
@@ -109,6 +111,6 @@
 -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/bootstrap.bundle.js" ></script>
-
+  <script src="js/poslodavac.js" ></script>
 </body>
 </html>

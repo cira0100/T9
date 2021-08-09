@@ -55,9 +55,11 @@
 
                     <h5 class="card-header" th:text="${podatak.username}"/>
                     <div class="card-body">
-                        <p class="card-text" th:text="${podatak.id}" />
+                        <div class="card-text" th:text="${podatak.mail}" />
                     </div>
-                    <div class="card-footer" th:text="${podatak.mail}" />
+                    <div class="card-body">
+                    <button  type="button" class="btn btn-danger" th:attr="onclick=|ObrisiKorisnika('${podatak.id}')|">Obrisi</button>
+                    </div>
                 </div>
             </th:block>
 

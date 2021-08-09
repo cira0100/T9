@@ -28,7 +28,6 @@ function login(){
                                     '</div>';
         }else
         {
-        alert(text);
         document.cookie=text;
         preusmeriLogin(text);
         }
@@ -58,7 +57,6 @@ function preusmeriLogin(token){
                                     '</div>';
         }else
         {
-            alert(tip);
             if(tip==1)
             {
                 document.location.href = '/radnikIndex';

@@ -56,3 +56,30 @@ function posetiOglas(i){
     var token=document.cookie;
     window.location="/oglas?idOglasa="+i;
 }
+
+
+function redirect(){
+
+        fetch("/vratiTip?token="+document.cookie)
+                            .then(function(response){
+                            response.text().then(function(text){
+                                if(text==1)
+                                    {
+                                        document.location.href = '/radnikIndex';
+
+                                    }else if(text==2){
+                                        document.location.href = '/poslodavacIndex';
+
+                                    }else if(text==3){
+                                        document.location.href = '/adminIndex';
+
+                                    }
+                                
+
+
+                            });
+
+
+                            })
+
+}

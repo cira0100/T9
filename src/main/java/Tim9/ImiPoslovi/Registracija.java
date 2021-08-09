@@ -118,6 +118,7 @@ public class Registracija {
 
         Baza baza=new Baza();
         uspeh=baza.lajkDislajk(token,idOgl);
+        baza.updateLajk(idOgl);
         return uspeh;
 
     }
@@ -137,7 +138,7 @@ public class Registracija {
     @GetMapping("/prijavaOglas")
     public boolean prijavaOglas(@RequestParam(name = "token") String token,
                            @RequestParam(name = "idOgl") int idOgl,
-                           @RequestParam(name = "tekst") String cv
+                           @RequestParam(name = "cv") String cv
     ){
         boolean uspeh=false;
 
@@ -147,7 +148,41 @@ public class Registracija {
 
     }
 
+    @GetMapping("/obrisiKom")
+    public boolean obrisiKom(@RequestParam(name = "token") String token,
+                                @RequestParam(name = "idKom") int idKom
+    ){
+        boolean uspeh=false;
 
+        Baza baza=new Baza();
+        uspeh=baza.brisiKom(idKom,token);
+        return uspeh;
+
+    }
+
+    @GetMapping("/obrisiOglas")
+    public boolean obrisiOglas(@RequestParam(name = "token") String token,
+                             @RequestParam(name = "idOgl") int idOgl
+    ){
+        boolean uspeh=false;
+
+        Baza baza=new Baza();
+        uspeh=baza.brisiOgl(token,idOgl);
+        return uspeh;
+
+    }
+
+    @GetMapping("/obrisiKorisnika")
+    public boolean obrisiKorisnika(@RequestParam(name = "token") String token,
+                               @RequestParam(name = "idUsera") int idUsera
+    ){
+        boolean uspeh=false;
+
+        Baza baza=new Baza();
+        uspeh=baza.brisiUsera(idUsera,token);
+        return uspeh;
+
+    }
 
 
 
