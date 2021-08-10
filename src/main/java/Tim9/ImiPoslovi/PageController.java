@@ -29,7 +29,7 @@ public class PageController {
     public String home(@RequestParam(name = "pretraga") String pretraga,
                        @RequestParam(name = "kategorija") String kategorija,
                        @RequestParam(name = "podkategorija") String podkategorija,
-                       @RequestParam(name = "remote") boolean remote,
+                       @RequestParam(name = "remote") String remote,
                        Model model){
         Baza baza=new Baza();
         ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
@@ -68,7 +68,7 @@ public class PageController {
     }
     @GetMapping("/error")
     public String error(){
-        return "404";
+        return "error";
     }
 
 
@@ -77,7 +77,7 @@ public class PageController {
     public String adminIndex(@RequestParam(name = "pretraga") String pretraga,
                              @RequestParam(name = "kategorija") String kategorija,
                              @RequestParam(name = "podkategorija") String podkategorija,
-                             @RequestParam(name = "remote") boolean remote,
+                             @RequestParam(name = "remote") String remote,
                              Model model){
         Baza baza=new Baza();
         ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
@@ -246,7 +246,7 @@ public class PageController {
     public String poslodavacIndex(@RequestParam(name = "pretraga") String pretraga,
                                   @RequestParam(name = "kategorija") String kategorija,
                                   @RequestParam(name = "podkategorija") String podkategorija,
-                                  @RequestParam(name = "remote") boolean remote,
+                                  @RequestParam(name = "remote") String remote,
                                   Model model){
         Baza baza=new Baza();
         ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
@@ -280,7 +280,7 @@ public class PageController {
     public String radnikIndex(@RequestParam(name = "pretraga") String pretraga,
                               @RequestParam(name = "kategorija") String kategorija,
                               @RequestParam(name = "podkategorija") String podkategorija,
-                              @RequestParam(name = "remote") boolean remote,
+                              @RequestParam(name = "remote") String remote,
                               Model model){
         Baza baza=new Baza();
         ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
@@ -344,6 +344,8 @@ public class PageController {
 
         return "ListaPoslodavacaRadnik";
     }
+
+
 
 
 

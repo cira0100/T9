@@ -184,6 +184,17 @@ public class Registracija {
 
     }
 
+    @GetMapping("/oceniPoslodavca")
+    public boolean oceniPoslodavca(@RequestParam(name="token") String token,
+                                   @RequestParam(name="idPos") int idpos,
+                                   @RequestParam(name="ocena") int ocena){
+        boolean uspeh=false;
+        Baza baza=new Baza();
+        System.out.println(token+" "+idpos+" "+ocena);
+        uspeh=baza.oceniPoslodavca(token,idpos,ocena);
+        return uspeh;
+    }
+
 
 
 }

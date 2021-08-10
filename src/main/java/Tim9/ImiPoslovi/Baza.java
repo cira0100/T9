@@ -1134,7 +1134,7 @@ public class Baza {
         }
     }
 
-    public ArrayList<Oglas> pretOglase(String naziv,String kat,String podkat,boolean remote){
+    public ArrayList<Oglas> pretOglase(String naziv,String kat,String podkat,String remote){
         ArrayList<Oglas> svi=sviOglasi();
         ArrayList<Oglas> filtered=new ArrayList<>(50);
         if(svi==null)
@@ -1149,7 +1149,7 @@ public class Baza {
             if(naziv=="" || matchNaziv.find()){
                 if(kat=="Svi" || matchKat.find()){
                     if(podkat=="Svi" || matchPodKat.find()){
-                        if(ogl.isRemote()==remote)
+                        if(String.valueOf(ogl.isRemote()).equals(remote) || remote.equals("Oba"))
                         filtered.add(ogl);
                     }
                 }

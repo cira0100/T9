@@ -37,7 +37,7 @@ function pretraga(){
     var pretraga=document.getElementById("pretragaText").value;
     var kategorija=document.getElementById("KategorijeSelect").value;
     var podkategorija=document.getElementById("PodKategorijeSelect").value;
-    var remote=document.getElementById("CheckRemote").checked;
+    var remote=document.getElementById("CheckRemote").value;
     if(kategorija==="Svi")
     {
         kategorija="";

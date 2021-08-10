@@ -37,7 +37,7 @@ function pretraga(){
     var pretraga=document.getElementById("pretragaText").value;
     var kategorija=document.getElementById("KategorijeSelect").value;
     var podkategorija=document.getElementById("PodKategorijeSelect").value;
-    var remote=document.getElementById("CheckRemote").checked;
+    var remote=document.getElementById("CheckRemote").value;
     if(kategorija==="Svi")
     {
         kategorija="";
@@ -183,15 +183,14 @@ function PrijaviSe(id){
     
 }
 
-function oceni(idpos){
-    alert(document.cookie+" "+idpos);
+function oceni(idposxd){
     novaStranica=window.open('','','width=450, height=300');
     novaStranica.document.write('<head><link href="css/bootstrap.css" rel="stylesheet"> <link href="css/css.css" rel="stylesheet"></head>')
-    novaStranica.document.write('<body><div class="d-flex justify-content-center">');
+    novaStranica.document.write('<body onunload="javascript:refreshParent()"><div class="d-flex justify-content-center">');
 
 
     novaStranica.document.write('<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-top:30px;">');
-    novaStranica.document.write('<h5 class="card-header">Oceni Poslodavca:</h5>');
+    novaStranica.document.write('<h5 class="card-header">Oceni Poslodavca Id:<span id="elempos">'+idposxd+'</span></h5>');
     novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="true" onclick="setOcena(1)">');
     novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio1">1</label>');
     novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked=""  onclick="setOcena(2)">');
@@ -212,11 +211,31 @@ function closeOpenedWindow() {
   window.close();
 }
 function updateOcenu(){
-    console.log("Poslata ocena:"+ocena);
+    var idpos=document.getElementById("elempos").innerHTML;
+    fetch("/oceniPoslodavca?token="+document.cookie+"&idPos="+idpos+"&ocena="+ocena)
+                        .then(function(response){
+                        response.text().then(function(text){
+                            if(text=="false"){
+                            alert("Greska pri slanju ocene, pokusajte ponovo");
+                             }
+                            else
+                            {
+                               console.log(idpos+" "+ocena);
+                               alert("Ocena uspesno poslata");
+                            }
+                            closeOpenedWindow();
+
+                        });
+
+
+                        })
+}
+function refreshParent()
+{
+    window.opener.location.reload(true);
 }
 var ocena=5;
 function setOcena(i){
     ocena=i;
-    console.log(ocena);
 }
 
