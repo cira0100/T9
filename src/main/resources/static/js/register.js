@@ -145,14 +145,14 @@ function Registruj(Id){
         var ime=document.getElementById("InputIme").value;
         var prezime=document.getElementById("InputPrezime").value;
         var date=encodeURI(document.getElementById("date").value);
-        var slika=username+"."+document.getElementById("InputSlika1").value.split(".").pop();
+        var slika=username+"."+document.getElementById("InputSlika").value.split(".").pop();
         
         var alertHolder=document.getElementById("alert_placeholder");
         var uspeh='<div class="alert alert-dismissible alert-success">'
                                                                        +'<button type="button" class="btn-close" data-bs-dismiss="alert"></button>'
                                                                        +'<strong>Uspesno ste se registrovali!</strong> '
                                                                        +'</div>';
-        var slika1=document.getElementById("InputSlika1").value;
+        var slika1=document.getElementById("InputSlika").value;
          var poruka=testRadnik(username,password,email,ime,prezime,date,slika1);
          
             if(poruka===""){

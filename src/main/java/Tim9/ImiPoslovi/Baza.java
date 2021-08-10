@@ -346,7 +346,7 @@ public class Baza {
     public ArrayList<Radnik> prijavljeniNaOglas(String token,int idOgl){
 
         if(daLiJeMojOglas(token,idOgl)) {
-            sql = "SELECT r.Id,r.Ime,r.Prezime,r.Date,r.Slika FROM `prijave` p  join radnik r on p.IdRadnika=r.Id WHERE p.IdOglasa = ?;";
+            sql = "SELECT r.Id,r.Ime,r.Prezime,r.Date,r.Slika,g.Mail FROM `prijave` p  join radnik r on p.IdRadnika=r.Id join glavna g on p.IdRadnika=g.Id WHERE p.IdOglasa = ?;";
             try {
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, String.valueOf(idOgl));
@@ -361,12 +361,14 @@ public class Baza {
                     String ime=rs.getString("r.Ime");
                     String prez=rs.getString("r.Prezime");
                     Date date=rs.getDate("r.Date");
-                    String slika=rs.getString("r.Slika");
+                    String mail=rs.getString("g.Mail");
+                    String slika=encoder("files/"+rs.getString("r.Slika"));
                     Radnik tmp=new Radnik();
                     tmp.setId(id);
                     tmp.setIme(ime);
                     tmp.setPrezime(prez);
                     tmp.setDate(date);
+                    tmp.setMail(mail);
                     tmp.setSlika(slika);
                     lrad.add(tmp);
                 }
@@ -1132,7 +1134,7 @@ public class Baza {
         }
     }
 
-    public ArrayList<Oglas> pretOglase(String naziv,String kat,String podkat){
+    public ArrayList<Oglas> pretOglase(String naziv,String kat,String podkat,boolean remote){
         ArrayList<Oglas> svi=sviOglasi();
         ArrayList<Oglas> filtered=new ArrayList<>(50);
         if(svi==null)
@@ -1147,6 +1149,7 @@ public class Baza {
             if(naziv=="" || matchNaziv.find()){
                 if(kat=="Svi" || matchKat.find()){
                     if(podkat=="Svi" || matchPodKat.find()){
+                        if(ogl.isRemote()==remote)
                         filtered.add(ogl);
                     }
                 }
@@ -1212,6 +1215,66 @@ public class Baza {
         }
         return null;
     }
+
+    public boolean oceniPoslodavca(String token,int idpos,int ocena){
+        int idrad=TokenToId(token);
+        if(idrad==-1)
+            return false;
+        String sql1="SELECT * FROM `ocene` WHERE IdRadnika=? AND IdPoslodavca=?;";
+        try{
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,idrad);
+            ps1.setInt(2,idpos);
+            ResultSet rs1=ps1.executeQuery();
+            if(!rs1.first()){
+                String sql2="INSERT INTO `ocene`(`IdRadnika`,`IdPoslodavca`,`Ocena`) VALUES (?,?,?) ;";
+                PreparedStatement ps2=conn.prepareStatement(sql2);
+                ps2.setInt(1,idrad);
+                ps2.setInt(2,idpos);
+                ps2.setInt(3,ocena);
+                ps2.executeQuery();
+                if(!updateOcene(idpos))
+                    return false;
+                return true;
+            }
+            else{
+                String sql2="UPDATE `ocene` SET `Ocena`=? WHERE `IdRadnika`=? AND `IdPoslodavca`=? ;";
+                PreparedStatement ps2=conn.prepareStatement(sql2);
+                ps2.setInt(1,ocena);
+                ps2.setInt(2,idrad);
+                ps2.setInt(3,idpos);
+                ps2.executeQuery();
+                if(!updateOcene(idpos))
+                    return false;
+                return true;
+            }
+        }catch(SQLException throwables){
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateOcene(int idpos){
+        try{
+            String sql1="SELECT AVG(Ocena) as broj FROM `ocene` WHERE IdPoslodavca=?;";
+            PreparedStatement ps1=conn.prepareStatement(sql1);
+            ps1.setInt(1,idpos);
+            ResultSet rs1=ps1.executeQuery();
+            rs1.first();
+            double ret=rs1.getDouble("broj");
+            String sql2="UPDATE `poslodavac` SET Ocena=? WHERE Id=?;";
+            PreparedStatement ps2=conn.prepareStatement(sql2);
+            ps2.setDouble(1,ret);
+            ps2.setInt(2,idpos);
+            ps2.executeQuery();
+            return true;
+        }
+        catch(SQLException th){
+            th.printStackTrace();
+        }
+        return false;
+    }
+
 
 }
 

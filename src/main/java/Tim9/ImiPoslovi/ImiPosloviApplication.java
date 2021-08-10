@@ -17,6 +17,7 @@ public class ImiPosloviApplication {
 	baza.brisiUsera(33,"uktW42mck429V22bdXgeco3IcTta6kH");
 	baza.brisiUsera("zckhzBBbGqumpvgHvdIV9p9g6bbzbahq");*/
 
+
 }
 
 

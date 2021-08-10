@@ -37,6 +37,7 @@ function pretraga(){
     var pretraga=document.getElementById("pretragaText").value;
     var kategorija=document.getElementById("KategorijeSelect").value;
     var podkategorija=document.getElementById("PodKategorijeSelect").value;
+    var remote=document.getElementById("CheckRemote").checked;
     if(kategorija==="Svi")
     {
         kategorija="";
@@ -45,7 +46,7 @@ function pretraga(){
     {
         podkategorija="";
     }
-    window.location="/radnikIndexTrazi?pretraga="+pretraga+"&kategorija="+kategorija+"&podkategorija="+podkategorija;
+    window.location="/radnikIndexTrazi?pretraga="+pretraga+"&kategorija="+kategorija+"&podkategorija="+podkategorija+"&remote="+remote;
 }
 
 function logOut(){

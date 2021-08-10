@@ -66,18 +66,22 @@
             <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum postavke: <span th:text="${datumPostavke}"/></div>
             <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum isteka: <span th:text="${datumIsteka}"/></div>
         </div>
+        <br>
+        <h3 class="card-header" style="border:1px solid #009cdc;" >Prijave na moj oglas</h3>
+        <div class="card-body" style="border:1px solid #009cdc;">
+        <th:block th:each="radnik:${radnici}">
+            <div class="card">
+                <img width="120" height="120" th:src="'data:image/png;base64,' + ${radnik.slika}" />
 
-
-
-
-
-
-
-
-
-
-
+                <h5 class="card-header" th:text="${radnik.ime}+' '+${radnik.prezime}"/>
+                <div class="card-body">
+                    <p class="card-text" th:text="${radnik.mail}" />
+                </div>
+            </div>
+        </th:block>
+        </div>
     </div>
+
 </div>
 
 

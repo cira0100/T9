@@ -29,9 +29,10 @@ public class PageController {
     public String home(@RequestParam(name = "pretraga") String pretraga,
                        @RequestParam(name = "kategorija") String kategorija,
                        @RequestParam(name = "podkategorija") String podkategorija,
+                       @RequestParam(name = "remote") boolean remote,
                        Model model){
         Baza baza=new Baza();
-        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija);
+        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
 
         model.addAttribute("oglasi",oglasi);
         model.addAttribute("kategorije",baza.listKat());
@@ -76,9 +77,10 @@ public class PageController {
     public String adminIndex(@RequestParam(name = "pretraga") String pretraga,
                              @RequestParam(name = "kategorija") String kategorija,
                              @RequestParam(name = "podkategorija") String podkategorija,
+                             @RequestParam(name = "remote") boolean remote,
                              Model model){
         Baza baza=new Baza();
-        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija);
+        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
 
         model.addAttribute("oglasi",oglasi);
         model.addAttribute("kategorije",baza.listKat());
@@ -192,6 +194,12 @@ public class PageController {
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());
         model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
 
+        model.addAttribute("radnici",baza.prijavljeniNaOglas(token,id));
+
+
+
+
+
         return "OglasPoslodavac";
     }
     @GetMapping("/oglasAdmin")
@@ -238,9 +246,10 @@ public class PageController {
     public String poslodavacIndex(@RequestParam(name = "pretraga") String pretraga,
                                   @RequestParam(name = "kategorija") String kategorija,
                                   @RequestParam(name = "podkategorija") String podkategorija,
+                                  @RequestParam(name = "remote") boolean remote,
                                   Model model){
         Baza baza=new Baza();
-        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija);
+        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
 
         model.addAttribute("oglasi",oglasi);
         model.addAttribute("kategorije",baza.listKat());
@@ -271,9 +280,10 @@ public class PageController {
     public String radnikIndex(@RequestParam(name = "pretraga") String pretraga,
                               @RequestParam(name = "kategorija") String kategorija,
                               @RequestParam(name = "podkategorija") String podkategorija,
+                              @RequestParam(name = "remote") boolean remote,
                               Model model){
         Baza baza=new Baza();
-        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija);
+        ArrayList<Oglas> oglasi =baza.pretOglase(pretraga,kategorija,podkategorija,remote);
 
         model.addAttribute("oglasi",oglasi);
         model.addAttribute("kategorije",baza.listKat());
