@@ -395,7 +395,7 @@ public class Baza {
                 rs.previous();
             ArrayList<Oglas> oglasipos = new ArrayList<Oglas>(20);
             while(rs.next()){
-                int IdOglasa= rs.getInt("Id");
+                int IdOglasa= rs.getInt("o.Id");
                 String Naziv= rs.getString("Naziv");
                 int idPoslodavca= rs.getInt("IdPoslodavca");
                 Date DatumPostavljanja= rs.getDate("Datum-Postavljanja");

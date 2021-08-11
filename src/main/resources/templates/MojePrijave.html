@@ -56,16 +56,17 @@
     <div class="col-md-6" id="OglasWrapper">
 
       <th:block th:each="oglas:${oglasi}">
-        <div class="card">
-          <h5 class="card-header" th:text="${oglas.naziv}"/>
+        <div class="card text-white bg-secondary mb-3" style="border: 3px solid #593196;">
+          <h5 class="card-header">Radno Mesto: <span th:text="${oglas.naziv}"/></h5>
           <div class="card-body">
-            <p class="card-text" th:text="${oglas.tekst}" />
+            <p class="card-text">Opis Posla: <span th:text="${oglas.tekst}" /></p>
+            <button type="button" class="btn btn-primary" th:attr="onclick=|posetiOglas('${oglas.IdOglasa}')|" style="float:right; width:150px">Otvori</button>
           </div>
-          <div class="card-footer" th:text="${oglas.remote}" />
-        </div>
-      </th:block>
+          <div class="card-footer">Remote: <span th:text="${oglas.remote}"/></div>
 
-    </div>
+        </div>
+
+      </th:block>
 
 
 

@@ -59,16 +59,17 @@
     <div class="col-md-6" id="OglasWrapper">
 
       <th:block th:each="poslodavac:${poslodavci}">
-        <div class="card">
-          <img width="120" height="120" th:src="'data:image/png;base64,' + ${poslodavac.slika}" />
-
-          <h5 class="card-header" th:text="${poslodavac.naziv}"/>
+        <img width="130" style="border:2px solid #593196;margin:3px;float:left;" height="130" th:src="'data:image/png;base64,' + ${poslodavac.slika}"/>
+        <div class="card text-white bg-secondary mb-3" style="border:2px solid #593196;">
+          <h5 class="card-header" >Naziv: <span th:text="${poslodavac.naziv}"/></h5>
           <div class="card-body">
-            <p class="card-text" th:text="${poslodavac.adresa}" />
-            <button class="btn btn-success my-2 my-sm-0" type="button" th:attr="onclick=|oceni('${poslodavac.id}')|">Oceni</button>
+            <p class="card-text" >Adresa: <span th:text="${poslodavac.adresa}"/></p>
+            <button class="btn btn-primary my-2 my-sm-0" style="float:right;" type="button" th:attr="onclick=|oceni('${poslodavac.id}')|">Oceni</button>
           </div>
-          <div class="card-footer" th:text="${poslodavac.ocena}" />
+          <div class="card-footer" >Ocena: <span th:text="${poslodavac.ocena}" /></div>
+
         </div>
+
       </th:block>
 
     </div>

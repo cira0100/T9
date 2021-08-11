@@ -55,15 +55,14 @@
         <div class="col-md-6" id="OglasWrapper">
 
             <th:block th:each="podatak:${podaci}">
-                <div class="card">
+                <div class="card text-white bg-secondary mb-3" style="border:2px solid #593196;">
 
-                    <h5 class="card-header" th:text="${podatak.username}"/>
+                    <h5 class="card-header" >Username: <span th:text="${podatak.username}"/></h5>
                     <div class="card-body">
-                        <div class="card-text" th:text="${podatak.mail}" />
+                        <div class="card-text" >Email: <span th:text="${podatak.mail}" /></div>
+                        <button  type="button" class="btn btn-danger" style="float:right;" th:attr="onclick=|ObrisiKorisnika('${podatak.id}')|">Obrisi</button>
                     </div>
-                    <div class="card-body">
-                    <button  type="button" class="btn btn-danger" th:attr="onclick=|ObrisiKorisnika('${podatak.id}')|">Obrisi</button>
-                    </div>
+
                 </div>
             </th:block>
 
