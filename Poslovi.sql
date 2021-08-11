@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 04, 2021 at 10:44 AM
+-- Generation Time: Aug 10, 2021 at 10:11 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.3.21
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `glavna` (
 
 INSERT INTO `glavna` (`Id`, `Username`, `Password`, `Mail`, `Type`, `Token`) VALUES
 (27, 'Admin', '$2a$10$TFdsM1AUNQ6R2k/fFwWAtur4wZlg7syTcEf.7X6q74Bl4AQx1x/6y', 'admin@gmail.com', 3, 'uktW42mck429V22bdXgeco3IcTta6kH'),
-(28, 'Bane', '$2a$10$mxCSjcbBUZTQNr9HrdtHr.fI9SAqaqHJ0de5bAxORGd3e5Kxslc5y', 'bane@gmail.com', 2, '0cOUlhAPE8hnkR1o4pny9hPmiIu91fci'),
+(28, 'Bane', '$2a$10$mxCSjcbBUZTQNr9HrdtHr.fI9SAqaqHJ0de5bAxORGd3e5Kxslc5y', 'wafflemynxyt@gmail.com', 2, '0cOUlhAPE8hnkR1o4pny9hPmiIu91fci'),
 (29, 'Zika', '$2a$10$63neYvkTmySyfCt8pFdiROsb3GcL4gvVsUunFT1hXSbMyQChh3LP6', 'zika@gmail.com', 2, 'S12k8wfqYCcWbDfa10bms1tBbfQ7xw1L'),
 (30, 'Mika', '$2a$10$Cx62qG/7VxzaFIg0JaQfROcfLuI7ivtC4PpAQP6oEXgORU1JET/jC', 'mika@gmail.com', 1, 'Bi53L2iDzMw4Wta0sPJgj534zfCkvpbY'),
 (31, 'Aca', '$2a$10$8TWsf5c5rF2XlfLgjz88aOrGUh6XHovmh3AS4Y5oR2vZH8zqgVPvu', 'aca@gmail.com', 1, 'BlqtgP1rMn3ufgFv1i3b5aVWxgVYgz9A'),
@@ -78,10 +78,8 @@ INSERT INTO `glavna` (`Id`, `Username`, `Password`, `Mail`, `Type`, `Token`) VAL
 (49, 'gdfgdfgdf', '$2a$10$6kGDK/8r7EpWW3rVY9LTUe/SlmCUACQGjp0Hy4DSX1oSog0/jrCOm', 'cirafdsfdsboxkg@gmail.com', 2, '52rWWbXYBQCXK4vwbg6y9sfxdhj8mRv9'),
 (50, 'hgfhfghfg', '$2a$10$t9wdL4ct4cLHu31RejbBSu2csYWFhpBf5fF9G8JisgeY/yBE9eHsi', 'cirahgfhfgfghboxkg@gmail.com', 2, 'qOgvNSf0AfFyVv1gcVa80kXEtsCgAv2C'),
 (51, 'fsdfsdfsd', '$2a$10$3vlRBhrGQLqL.i.aqemQBuDl8ZnHwzxyW.nT4jvDsXAWr6308FsQ.', 'cirabfdsfsdoxkg@gmail.com', 2, 'rJu067h9FFE7xAiIRjfV1ntRQawtr0Zv'),
-(52, 'hhfghfg', '$2a$10$H4dcjkeiSEyFlaZVQ5Vvv.YeXJs/riXEAE4a4PYPcZEPgXhOSrECu', 'cirabhgfhfgoxkg@gmail.com', 2, 'j90ilp6r5qWvCv4bwt5Y3mkYbF5n9RLf'),
-(53, 'hgfhghgfhfgf', '$2a$10$M37YMRWIe5GN0x9kt0H/B.tEVSjxygDc3tVW52a86zEj/tQDrhqxe', 'cirahfghgfboxkg@gmail.com', 1, 'dxmVK39f7D23T8e1kE3g9ws8S66cLAcS'),
 (54, 'Acaa', '$2a$10$Nw3teVnv4SPhOQ9IPAymsuPewBigRc9gmg1nynFXxjMqDg0bPG6Xm', 'cirabdsaoxkg@gmail.com', 3, 'yTpuV1URiWkqrculJDxmEQo9WppkagAf'),
-(55, 'TESTTTTTTTTTTTTTTTT', '$2a$10$UrjkXlCTpsU6tRey7hyfFezx6vlKKHWvDo3WD/xvBWVKaPTQ/hRYa', 'cirabTESTTTTTTTTTTTTTTTToxkg@gmail.com', 2, 'ySACd2aGTy1rygvM06tn3ocqdRKiofNh');
+(55, 'Bogdan123', '$2a$10$NL6R/.IIbTav4YBP68R.t.KxALPtiF3bECWUnezIxws7zE9zPogYu', 'cirabBogdan123oxkg@gmail.com', 1, 'xtOx9WXz30hrI4pAumz7xM4493gkihto');
 
 -- --------------------------------------------------------
 
@@ -122,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `komentari` (
   PRIMARY KEY (`Id`),
   KEY `IdOglasa` (`IdOglasa`),
   KEY `IdRadnika` (`IdUsera`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `komentari`
@@ -131,7 +129,8 @@ CREATE TABLE IF NOT EXISTS `komentari` (
 INSERT INTO `komentari` (`Id`, `IdOglasa`, `IdUsera`, `Tekst`) VALUES
 (1, 2, 31, 'alo aco'),
 (2, 2, 30, 'molim'),
-(3, 3, 27, 'olijoijouiiuo');
+(3, 3, 27, 'olijoijouiiuo'),
+(18, 2, 31, 'KOM');
 
 -- --------------------------------------------------------
 
@@ -147,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `lajkovioglasa` (
   PRIMARY KEY (`Id`),
   KEY `IDOglasa` (`IdOglasa`),
   KEY `IDRadnika` (`IdRadnika`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `lajkovioglasa`
@@ -166,10 +165,18 @@ DROP TABLE IF EXISTS `ocene`;
 CREATE TABLE IF NOT EXISTS `ocene` (
   `IdRadnika` int(11) NOT NULL,
   `IdPoslodavca` int(11) NOT NULL,
-  `Ocena` int(11) NOT NULL,
-  KEY `IdPoslodavca` (`IdPoslodavca`),
-  KEY `IdRadnika` (`IdRadnika`)
+  `Ocena` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Dumping data for table `ocene`
+--
+
+INSERT INTO `ocene` (`IdRadnika`, `IdPoslodavca`, `Ocena`) VALUES
+(30, 32, 4),
+(31, 32, 4),
+(46, 32, 1),
+(31, 28, 3);
 
 -- --------------------------------------------------------
 
@@ -194,20 +201,15 @@ CREATE TABLE IF NOT EXISTS `oglas` (
   `Remote` tinyint(1) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `IdPoslodavca` (`IdPoslodavca`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `oglas`
 --
 
 INSERT INTO `oglas` (`Id`, `Naziv`, `IdPoslodavca`, `Datum-Postavljanja`, `Datum-Isteka`, `Lajkovi`, `Posete`, `Kategorija`, `PodKategorije`, `Plata`, `Slika`, `Tekst`, `Remote`) VALUES
-(1, 'Programer', 28, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 1000, 'Slika', 'Veoma dobar oglas', 0),
 (2, 'Programer', 32, '2021-07-20', '2021-07-23', 0, 0, 'IT', 'Java', 5432, 'dasdas', 'dasdasdas', 0),
-(3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1),
-(8, 'testoglas1', 47, '2021-07-18', NULL, 0, 0, 'Administration', 'Administrative assistant', 10000, 'adasdasdasd', 'adasdasdasdas', 1),
-(9, 'dasda', 32, '2021-08-04', '2000-11-11', 0, 0, 'Administration', 'Administrative assistant', 10, 'micwIwpQKC5TS3Ki.png', 'gdfgdfgdf', 1),
-(10, 'Programer JOB', 32, '2021-08-04', '2022-10-10', 0, 0, 'Animals', 'Animal technician', 1000, 'voAo5ZyzqLjAlu52.png', 'Handle animals like Bane', 1),
-(11, 'dsadas', 32, '2021-08-04', '2022-11-11', 0, 0, 'Administration', 'Administrative assistant', -1, 'AVHBmOEWekzBhTES.png', 'dasdasdas', 0);
+(3, 'Programer', 29, '2021-07-20', '2021-07-30', 1, 0, 'IT', 'Java', 1000, 'hgfhfghfg', 'hgfhgfhfg', 1);
 
 -- --------------------------------------------------------
 
@@ -264,17 +266,15 @@ CREATE TABLE IF NOT EXISTS `poslodavac` (
 --
 
 INSERT INTO `poslodavac` (`Id`, `Naziv`, `Adresa`, `Slika`, `Ocena`) VALUES
-(28, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
+(28, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', 3),
 (29, 'Branislav inc', 'Petra Prvog', 'C:\\fakepath\\projekatproba.sql', NULL),
-(32, 'Old', 'dsadasdas', 'C:\\fakepath\\pom.xml', NULL),
+(32, 'Old', 'dsadasdas', 'C:\\fakepath\\pom.xml', 3),
 (45, 'fsdfsd', 'fdssdf', 'Petar123.', NULL),
 (47, 'dsdas', 'dsadsa', 'Lazar.png', NULL),
 (48, 'dsadsa', 'dsadsa', 'Peraaaaa.png', NULL),
 (49, 'fdsfsd', 'fsdfsdfds', 'gdfgdfgdf.mkv', NULL),
 (50, 'hfghfg', 'hgfhfg', 'hgfhfghfg.png', NULL),
-(51, 'fdsfds', 'fdsfds', 'fsdfsdfsd.mkv', NULL),
-(52, 'hgfhfg', 'hgfhfg', 'hhfghfg.png', NULL),
-(55, 'TESTTTTTTTTTTTTTTTTsa', 'TESTTTTTTTTTTTTTTTT', 'TESTTTTTTTTTTTTTTTT.png', NULL);
+(51, 'fdsfds', 'fdsfds', 'fsdfsdfsd.mkv', NULL);
 
 -- --------------------------------------------------------
 
@@ -290,16 +290,16 @@ CREATE TABLE IF NOT EXISTS `prijave` (
   PRIMARY KEY (`Id`),
   KEY `IdOglasa` (`IdOglasa`),
   KEY `IdRadnika` (`IdRadnika`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- Dumping data for table `prijave`
 --
 
 INSERT INTO `prijave` (`Id`, `IdOglasa`, `IdRadnika`) VALUES
-(1, 1, 31),
-(4, 2, 31),
-(5, 3, 31);
+(5, 3, 31),
+(6, 2, 31),
+(9, 2, 55);
 
 -- --------------------------------------------------------
 
@@ -325,7 +325,7 @@ INSERT INTO `radnik` (`Id`, `Ime`, `Prezime`, `Date`, `Slika`) VALUES
 (30, 'Mika', 'Mikic', '2000-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
 (31, 'Aca', 'Acic', '2001-10-10', 'C:\\fakepath\\ProjekatTest.iml'),
 (46, 'dsadas', 'dsadas', '2000-10-10', 'Mika123.png'),
-(53, 'hgfhfg', 'hghfg', '2000-02-02', 'hgfhghgfhfgf.png');
+(55, 'Bogdan', 'Bogdanovic', '2000-10-10', 'Bogdan123.png');
 
 --
 -- Constraints for dumped tables
@@ -350,13 +350,6 @@ ALTER TABLE `komentari`
 ALTER TABLE `lajkovioglasa`
   ADD CONSTRAINT `LajkoviOglasa_ibfk_1` FOREIGN KEY (`IdOglasa`) REFERENCES `oglas` (`Id`),
   ADD CONSTRAINT `LajkoviOglasa_ibfk_2` FOREIGN KEY (`IdRadnika`) REFERENCES `radnik` (`Id`);
-
---
--- Constraints for table `ocene`
---
-ALTER TABLE `ocene`
-  ADD CONSTRAINT `ocene_ibfk_1` FOREIGN KEY (`IdPoslodavca`) REFERENCES `poslodavac` (`Id`),
-  ADD CONSTRAINT `ocene_ibfk_2` FOREIGN KEY (`IdRadnika`) REFERENCES `radnik` (`Id`);
 
 --
 -- Constraints for table `oglas`

@@ -10,7 +10,11 @@
     <link href="css/css.css" rel="stylesheet">
     <title>Oglas</title>
 </head>
-<body>
+<body style="
+      background-image: url('images/oglas.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100%;">
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
@@ -67,7 +71,7 @@
             <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum isteka: <span th:text="${datumIsteka}"/></div>
         </div>
         <br>
-        <h3 class="card-header" style="border:1px solid #009cdc;" >Prijave na moj oglas</h3>
+        <h3 class="card-header" style="border:1px solid #009cdc;" th:text="${MojOglas}"/>
         <div class="card-body" style="border:1px solid #009cdc;">
         <th:block th:each="radnik:${radnici}">
             <div class="card">

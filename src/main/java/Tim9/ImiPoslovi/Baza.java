@@ -27,8 +27,8 @@ public class Baza {
         }
     }
 
-    private String GenerateCookie() {
-        String cookie = new String();
+    private String GenerateToken() {
+        String token = new String();
         char c;
         int t;
         for(int i = 0; i < 32; i++) {
@@ -42,10 +42,10 @@ public class Baza {
                 c = (char)('A' + (t - 36));
             }
 
-            cookie += c;
+            token += c;
         }
 
-        return cookie;
+        return token;
     }
 
     private String postojiKorisnik(String username, String email){
@@ -68,9 +68,9 @@ public class Baza {
                 if(rs.next())
                     return null;
                 else{
-                    String response=GenerateCookie();
+                    String response= GenerateToken();
                     do {
-                        response = GenerateCookie();
+                        response = GenerateToken();
                         sql = "SELECT * FROM `glavna` WHERE `Token`=?;";
                         ps=conn.prepareStatement(sql);
                         ps.setString(1,String.valueOf(response));

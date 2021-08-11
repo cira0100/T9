@@ -193,7 +193,10 @@ public class PageController {
         model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());
         model.addAttribute("slika",baza.encoder("files/"+oglas.getSlika()));
-
+        if(baza.daLiJeMojOglas(token,id))
+            model.addAttribute("MojOglas","Prijave na moj oglas:");
+        else
+            model.addAttribute("MojOglas","Nije moj oglas");
         model.addAttribute("radnici",baza.prijavljeniNaOglas(token,id));
 
 
