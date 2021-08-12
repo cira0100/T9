@@ -186,8 +186,7 @@ function PrijaviSe(id){
 function oceni(idposxd){
     novaStranica=window.open('','','width=450, height=300');
     novaStranica.document.write('<head><link href="css/bootstrap.css" rel="stylesheet"> <link href="css/css.css" rel="stylesheet"></head>')
-    novaStranica.document.write('<body onunload="javascript:refreshParent()"><div class="d-flex justify-content-center">');
-
+    novaStranica.document.write('<body onunload="javascript:refreshParent()" style="background-color:#a991d4 !important"><div class="d-flex justify-content-center bg-secondary">');
 
     novaStranica.document.write('<div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-top:30px;">');
     novaStranica.document.write('<h5 class="card-header">Oceni Poslodavca Id:<span id="elempos">'+idposxd+'</span></h5>');
@@ -202,7 +201,7 @@ function oceni(idposxd){
     novaStranica.document.write('<input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked=""  onclick="setOcena(5)">');
     novaStranica.document.write('<label class="btn btn-outline-primary" for="btnradio5">5</label>');
     novaStranica.document.write('</div></div>');
-    novaStranica.document.write('<div class="d-flex justify-content-center">');
+    novaStranica.document.write('<div class="d-flex justify-content-center bg-secondary">');
     novaStranica.document.write('<button class="btn btn-success my-2 my-sm-0" type="button" onclick="updateOcenu();">Potvrdi</button>');
     novaStranica.document.write('<button class="btn btn-danger my-2 my-sm-0" type="button" onclick="closeOpenedWindow()">Otkazi</button>');
     novaStranica.document.write('</div> <script src="js/bootstrap.bundle.js" ></script> <script src="js/radnik.js"></script> </body>');

@@ -135,6 +135,12 @@ public class PageController {
         model.addAttribute("lajkovi",oglas.getLajkovi());
         model.addAttribute("opis",oglas.getTekst());
         model.addAttribute("remote",oglas.isRemote());
+        if(oglas.getPlata()==-1)
+            model.addAttribute("plata","Po Dogovoru");
+        else
+            model.addAttribute("plata",oglas.getPlata());
+        model.addAttribute("kategorija",oglas.getKategorija());
+        model.addAttribute("podkategorija",oglas.getPodKategorije());
         model.addAttribute("komentari",komentari);
         model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());
@@ -162,6 +168,12 @@ public class PageController {
         model.addAttribute("lajkovi",oglas.getLajkovi());
         model.addAttribute("opis",oglas.getTekst());
         model.addAttribute("remote",oglas.isRemote());
+        if(oglas.getPlata()==-1)
+            model.addAttribute("plata","Po Dogovoru");
+        else
+            model.addAttribute("plata",oglas.getPlata());
+        model.addAttribute("kategorija",oglas.getKategorija());
+        model.addAttribute("podkategorija",oglas.getPodKategorije());
         model.addAttribute("komentari",komentari);
         model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());
@@ -189,6 +201,12 @@ public class PageController {
         model.addAttribute("lajkovi",oglas.getLajkovi());
         model.addAttribute("opis",oglas.getTekst());
         model.addAttribute("remote",oglas.isRemote());
+        if(oglas.getPlata()==-1)
+            model.addAttribute("plata","Po Dogovoru");
+        else
+            model.addAttribute("plata",oglas.getPlata());
+        model.addAttribute("kategorija",oglas.getKategorija());
+        model.addAttribute("podkategorija",oglas.getPodKategorije());
         model.addAttribute("komentari",komentari);
         model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());
@@ -225,6 +243,12 @@ public class PageController {
         model.addAttribute("lajkovi",oglas.getLajkovi());
         model.addAttribute("opis",oglas.getTekst());
         model.addAttribute("remote",oglas.isRemote());
+        if(oglas.getPlata()==-1)
+            model.addAttribute("plata","Po Dogovoru");
+        else
+            model.addAttribute("plata",oglas.getPlata());
+        model.addAttribute("kategorija",oglas.getKategorija());
+        model.addAttribute("podkategorija",oglas.getPodKategorije());
         model.addAttribute("komentari",komentari);
         model.addAttribute("datumPostavke",oglas.getDatumPostavljanja());
         model.addAttribute("datumIsteka",oglas.getDatumIsteka());

@@ -14,7 +14,7 @@
       background-image: url('images/oglas.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-size: 100%;">
+      background-size:  auto auto;">
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -37,33 +37,45 @@
 
 
 <div class="row align-items-center">
-  <div class="col-md-6 mx-auto" style="border:4px solid #593196;margin-top:150px;margin-bottom:200px;padding-bottom:15px;background-color:white;">
+  <div class="col-md-6 mx-auto text-white bg-secondary " style="border:4px solid #593196;margin-top:150px;margin-bottom:200px;padding-bottom:15px;">
 
 
 
 
-      <div class="card mb-6" style="margin-top:20px;">
+      <div class="card mb-6 card text-white bg-secondary" style="margin-top:20px;">
         <h3 class="card-header" style="border:1px solid #009cdc;" th:text="${naslov}" />
-          <img style="border:1px solid #009cdc;" width="100%" height="200" th:src="'data:image/png;base64,' + ${slika}" />
+        <div style="height:200;width:100%">
+          <div class="d-flex justify-content-center" style="margin:10px;">
+          <img  style="border:1px solid #009cdc;max-width: 100%;height: auto;"  th:src="'data:image/png;base64,' + ${slika}" />
+        </div>
+        </div>
+        <div class="card-body" style="border:1px solid #009cdc;">
+          <div style="float:left;display:inline;">
+          <p class="card-text" style="font-weight:bold;">Plata: <span th:text="${plata}"/></p>
+          <p class="card-text" style="font-weight:bold;">Kategorija: <span th:text="${kategorija}"/></p>
+          <p class="card-text" style="font-weight:bold;">Podkategorija: <span th:text="${podkategorija}"/></p>
+          </div>
+          <button type="button" style="float:right;display:inline;" class="btn btn-warning" disabled>Like:<span th:text="${lajkovi}"/></button>
+        </div>
+        <div class="card-body" style="border:1px solid #009cdc;">
+          <p class="card-text">Opis: <span  th:text="${opis}"/></p>
+        </div>
+        <div class="card-body" style="border:1px solid #009cdc;">
+          <p class="card-text" style="font-weight:bold;">Na daljinu: <span th:text="${remote}"/></p>
+        </div>
+        <div class="card-footer text-white" style="border:1px solid #009cdc;" >
+          <p style="float:left;display:inline;font-weight:bold;">Datum postavke: <span th:text="${datumPostavke}"/></p>
+          <p style="float:right;display:inline;font-weight:bold;">Datum Isteka: <span th:text="${datumIsteka}"/></p>
+        </div>
 
-        <div class="card-body" style="border:1px solid #009cdc;">
-          <button type="button" class="btn btn-warning" disabled>Like:<span th:text="${lajkovi}"/></button>
-        </div>
-        <div class="card-body" style="border:1px solid #009cdc;">
-          <p class="card-text" th:text="${opis}"/>
-        </div>
-        <div class="card-body" style="border:1px solid #009cdc;">
-          <p class="card-text">Na daljinu: <span th:text="${remote}"/></p>
-        </div>
         <ul class="list-group list-group-flush" style="border:1px solid #009cdc;">
 
           <th:block th:each="komentar:${komentari}">
-            <li class="list-group-item" th:text="${komentar.s1}+' '+${komentar.s2}+' : '+${komentar.tekst}"/>
+            <li class="list-group-item " th:text="${komentar.s1}+' '+${komentar.s2}+' : '+${komentar.tekst}"/>
 
           </th:block>
         </ul>
-        <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum postavke: <span th:text="${datumPostavke}"/></div>
-        <div class="card-footer text-muted" style="border:1px solid #009cdc;" >Datum isteka: <span th:text="${datumIsteka}"/></div>
+
       </div>
 
 
