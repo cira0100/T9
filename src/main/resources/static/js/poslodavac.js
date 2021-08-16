@@ -1,7 +1,11 @@
 function getPodKategorije(){
     var kategorija=document.getElementById("KategorijeSelect").value;
     var podkategorijemain=document.getElementById("PodKategorijeSelect");
-
+    if(kategorija=="Svi")
+        {
+            podkategorijemain.innerHTML='<option>Svi</option>';
+        }
+        else{
     fetch("/getPodKategorije?kategorija="+kategorija)
     .then(function(response){
     response.text().then(function(podkategorije){
@@ -24,6 +28,7 @@ function getPodKategorije(){
 
 
     })
+    }
 
 
 
