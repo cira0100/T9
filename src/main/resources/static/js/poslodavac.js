@@ -146,11 +146,16 @@ function testOglas(naziv,date,kategorija,podkategorija,plata,slika,opis,remote){
     }else if(!isValidDate(date))
     {
         poruka="Datum mora biti validan";
+    }else if(!isFutureDate(date)){
+        poruka="Datum mora biti u buducnosti";
     }else if(kategorija===""){
         poruka="Kategorija ne sme biti prazna";
     }else if(podkategorija===""){
         poruka="PodKategorija ne sme biti prazna";
-    }else if(slika===""){
+    }else if(!brojevi(plata)){
+        poruka="Plata mora biti pozitivan ceo broj ili prazna";
+    }
+    else if(slika===""){
         poruka="Slika ne sme biti prazna";
     }else if(opis===""){
         poruka="opis ne sme biti prazan";
@@ -238,5 +243,18 @@ function ObrisiOglas(id){
 
                     })
     
+}
+
+function isFutureDate(value) {
+    d_now = new Date();
+    d_inp = new Date(value)
+    return d_now.getTime() <= d_inp.getTime();
+}
+
+function brojevi(text){
+var numbers = /^[0-9]+$/;
+    if(text==-1)
+    return true;
+return text.match(numbers);
 }
 

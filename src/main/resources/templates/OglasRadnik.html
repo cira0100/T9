@@ -14,7 +14,7 @@
       background-image: url('images/oglas.jpg');
       background-repeat: no-repeat;
       background-attachment: fixed;
-      background-size:  auto auto;">
+      background-size:  auto auto;" onload="isFutureDate();">
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
@@ -65,12 +65,12 @@
       </div>
       <div class="card-footer text-white" style="border:1px solid #009cdc;" >
         <p style="float:left;display:inline;font-weight:bold;">Datum postavke: <span th:text="${datumPostavke}"/></p>
-        <p style="float:right;display:inline;font-weight:bold;">Datum Isteka: <span th:text="${datumIsteka}"/></p>
+        <p style="float:right;display:inline;font-weight:bold;">Datum Isteka: <span id="datumistekatekst" th:text="${datumIsteka}"/></p>
       </div>
       <div class="card-body" style="border:1px solid #009cdc;">
         <label class="form-label mt-4" for="CV" >CV</label>
         <input type="file" class="form-control-file" accept="application/pdf" id="CV">
-        <button type="button" class="btn btn-primary" th:attr="onclick=|PrijaviSe('${IdOglasa}')|">Prijavi se</button>
+        <button id="prijavadugme" type="button" class="btn btn-primary" th:attr="onclick=|PrijaviSe('${IdOglasa}')|">Prijavi se</button>
       </div>
       <div class="card-body" style="border:1px solid #009cdc;">
         <label for="Komentar" class="form-label mt-4">Komentar</label>

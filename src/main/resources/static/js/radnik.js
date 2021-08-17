@@ -154,10 +154,16 @@ function uploadfile(name){
 function PrijaviSe(id){
     var ext="."+document.getElementById("CV").value.split(".").pop();
     var file1=GenImage(16)+ext;
-    var poruka=proveraVelicineFajla(document.getElementById("CV").files[0].size);
-    if(ext!=".pdf")
+    var poruka="";
+    if(document.getElementById("CV").value=="")
+        poruka="Unesite Fajl";
+    if(poruka=="")
+        poruka=proveraVelicineFajla(document.getElementById("CV").files[0].size);
+    if(poruka=="" && ext!=".pdf")
         poruka="pogresan format";
+
     if(poruka===""){
+        document.getElementById('prijavadugme').setAttribute("disabled","disabled");
         uploadfile(file1);
         fetch("/prijavaOglas?token="+document.cookie+"&idOgl="+id+"&cv="+file1)
                     .then(function(response){
@@ -167,6 +173,7 @@ function PrijaviSe(id){
                 }
                         else
                         {
+
                            alert("Uspesno ste se prijavili");
                         }
 
@@ -238,3 +245,11 @@ function setOcena(i){
     ocena=i;
 }
 
+function isFutureDate() {
+    d_now = new Date();
+    d_inp = new Date(document.getElementById("datumistekatekst").innerHTML);
+    if(d_now.getTime() > d_inp.getTime()){
+        document.getElementById('prijavadugme').setAttribute("disabled","disabled");
+        document.getElementById("prijavadugme").innerHTML="Oglas Istekao";
+        }
+}
