@@ -688,6 +688,7 @@ public class Baza {
 
     public boolean brisiOgl(String token,int idogl){
         int userid=TokenToId(token);
+        String slika;
         int tip=vratiType(userid);
         try{
             String sql1="SELECT * FROM `oglas` WHERE Id=?";
@@ -696,6 +697,7 @@ public class Baza {
             ResultSet rs1=ps1.executeQuery();
             if(!rs1.first())
                 return false;
+            slika=rs1.getString("Slika");
         }
         catch (SQLException th){
             th.printStackTrace();
@@ -721,11 +723,15 @@ public class Baza {
                 ps3.executeQuery();
                 System.out.println("Obrisao Komentare....");
 
+
+
                 String sql4="DELETE  FROM `oglas` WHERE Id=?";
                 PreparedStatement ps4=conn.prepareStatement(sql4);
                 ps4.setInt(1,idogl);
                 ps4.executeQuery();
                 System.out.println("Obrisao Oglas.... ZAVRSIO");
+
+                (new File("files/"+slika)).delete();
 
                 return true;
             }
@@ -862,6 +868,15 @@ public class Baza {
                 brisiKom(komentar.getId(),token);
 
                 try {
+                    String sql1="Select * FROM `poslodavac` WHERE Id=?;";
+                    PreparedStatement ps1=conn.prepareStatement(sql1);
+                    ps1.setInt(1,iduser);
+                    ResultSet rs1=ps1.executeQuery();
+                    if(!rs1.first())
+                        return false;
+                    String slika=rs1.getString("Slika");
+
+
                     sql="DELETE FROM `poslodavac` WHERE Id=?;";
                     PreparedStatement ps=conn.prepareStatement(sql);
                     ps.setInt(1,iduser);
@@ -870,6 +885,10 @@ public class Baza {
                     ps=conn.prepareStatement(sql);
                     ps.setInt(1,iduser);
                     ps.executeQuery();
+
+                    (new File("files/"+slika)).delete();
+
+
                     return true;
 
 
@@ -890,6 +909,16 @@ public class Baza {
             for(Komentar komentar:kometari)
                 brisiKom(komentar.getId(),token);
             try {
+                String sql1="Select * FROM `radnik` WHERE Id=?;";
+                PreparedStatement ps1=conn.prepareStatement(sql1);
+                ps1.setInt(1,iduser);
+                ResultSet rs1=ps1.executeQuery();
+                if(!rs1.first())
+                    return false;
+                String slika=rs1.getString("Slika");
+
+
+
                 sql="DELETE FROM `radnik` WHERE Id=?;";
                 PreparedStatement ps=conn.prepareStatement(sql);
                 ps.setInt(1,iduser);
@@ -898,6 +927,10 @@ public class Baza {
                 ps=conn.prepareStatement(sql);
                 ps.setInt(1,iduser);
                 ps.executeQuery();
+
+                (new File("files/"+slika)).delete();
+
+
                 return true;
 
 
