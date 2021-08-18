@@ -339,7 +339,7 @@ Dobija file i uploaduje ga na serveru u direktorijum files.File mora biti manji 
 
 ## Admin.java
 
-###Prosiruje klasu korisnik sa:
+### Prosiruje klasu korisnik sa:
 
 String ime - ime admina
 String prezime - prezime admina
@@ -348,18 +348,18 @@ String prezime - prezime admina
 
 ## EMailSender.java
 
-###void SendEmail(String email,String Naziv,String cv)
+### void SendEmail(String email,String Naziv,String cv)
 
 Funkcija za testiranje slanja email-ova, zamenjena funkcijom void SendEmailAttachement(String email,String Naziv,String fileToAttach)
 Nije u upotrebi - DEPRECATED
 
-###void SendEmailAttachement(String email,String Naziv,String fileToAttach)
+### void SendEmailAttachement(String email,String Naziv,String fileToAttach)
 
 Aktuelna funkcija za slanje emailova poslodavcu pri prijavi radnika, uz attachovan CV, od strane zvanicnog emaila sajta
 
 ## Komentar.java
 
-###Klasa koja sluzi za postovanje komentara na neki oglas
+### Klasa koja sluzi za postovanje komentara na neki oglas
 
 String s1 - Ukoliko je poster Poslodavac predstavlja Naziv , inace Ime
 String s2 - Ukoliko je poster Poslodavac predstavlja Adresu , inace prezime
@@ -368,7 +368,7 @@ int id - autonumber koji se prosledjuje kada admin pregleda stranicu da bi mogao
 
 ## Korisnik.java
 
-###Klasa koja sadrzi sve osnovne informacije o korisniku, dalje prosirena na osnovu tipa(1-radnik,2-poslodavac,3-admin):
+### Klasa koja sadrzi sve osnovne informacije o korisniku, dalje prosirena na osnovu tipa(1-radnik,2-poslodavac,3-admin):
 
 int id - autonumber jedinstveni id korisnika
 String username - jedinstveni username korisnika
@@ -379,7 +379,7 @@ String token - jedinstveni generisani token korisnika koji se cuva u cookie-u
 
 ## Oglas.java
 
-###Sadrzi sve Informacije o oglasu:
+### Sadrzi sve Informacije o oglasu:
 
 int IdOglasa - autonumber jedinstveni id oglasa
 String Naziv - Naslov Oglasa
@@ -409,7 +409,7 @@ Pozivana je u bazi prilikom logina gde joj se setuje (String stored_hash) na odg
 
 ## Podaci.java
 
-###Klasa koja sluzi sa izlistavanje osnovnih podataka na admin stranici za brisanje korisnika
+### Klasa koja sluzi sa izlistavanje osnovnih podataka na admin stranici za brisanje korisnika
 
 int id - jedinstveni id preko koga se dalje u tabeli svih korisnika on trazi i brise
 String username - username korisnika; prikazani samo da bi admin znao koga da obrise
@@ -417,7 +417,7 @@ String mail - email korisnika; prikazani samo da bi admin znao koga da obrise
 
 ## Poslodavac.java
 
-###Prosiruje klasu korisnik sa:
+### Prosiruje klasu korisnik sa:
 
 String naziv - naziv firme poslodavca
 String adresa - adresa firme poslodavca
@@ -426,7 +426,7 @@ Double ocena - prosek svih ocena dodeljenih od strane radnika
 
 ## Radnik.java
 
-###Prosiruje klasu korisnik sa:
+### Prosiruje klasu korisnik sa:
 
 String ime - ime radnika
 String prezime - prezime danika
