@@ -350,7 +350,7 @@ public class PageController {
         return "MojePrijave";
     }
 
-    @GetMapping("/listaPoslodavacaTrazi")//editing
+    @GetMapping("/listaPoslodavacaTrazi")
     public String listaPoslodavaca(@RequestParam(name="pretraga") String pretraga, Model model){
         Baza baza=new Baza();
         ArrayList<Poslodavac> poslodavci=baza.traziPoslodavca(pretraga);
