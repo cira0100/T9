@@ -274,7 +274,7 @@ public class Baza {
 
     public ArrayList<Oglas> oglasiPoslodavca(String token){ //Lista oglase ulogovanog poslodavca
 
-        int IdPoslodavca=(int)TokenToId(token);
+        int IdPoslodavca=TokenToId(token);
         if(IdPoslodavca==-1)
             return null;
         return oglasiPoslodavca(IdPoslodavca);
@@ -542,6 +542,8 @@ public class Baza {
 
     public boolean postKom(String token,int idOgl,String tekst){
         int iduser=TokenToId(token);
+        if(iduser==-1)
+            return false;
         sql="INSERT INTO `komentari` (IdOglasa,IdUsera,Tekst) VALUES (?,?,?);";
         try{
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -665,7 +667,7 @@ public class Baza {
         return false;
     }
 
-    public boolean brisiKom(int idkom,String token){//obavezno reloadaj listu komentara nakon brisanja
+    public boolean brisiKom(int idkom,String token){
         int iduser=TokenToId(token);
         int tip=vratiType(iduser);
         if(iduser==-1)

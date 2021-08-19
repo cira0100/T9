@@ -69,7 +69,7 @@
             </div>
             <div class="card-body" style="border:1px solid #009cdc;">
                 <label for="Komentar" class="form-label mt-4">Komentar</label>
-                <textarea class="form-control" id="Komentar" rows="1"></textarea>
+                <textarea class="form-control" id="Komentar" rows="1" maxlength="300"></textarea>
                 <button style="margin-top:5px;" type="button" class="btn btn-primary" th:attr="onclick=|PostKom('${IdOglasa}')|">Post Komentar</button>
             </div>
             <ul class="list-group list-group-flush" style="border:1px solid #009cdc;">
