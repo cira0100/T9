@@ -202,11 +202,12 @@ function ValidateEmail(email) {
 
 function testPoslodavac(username,password,email,naziv,adresa,slika){
     
+    var regex=new RegExp("^[a-zA-Z0-9]*$");
 
     var message="";
         var glavnaPoruka="";
-        if(username===""){
-            message="Username ne sme biti prazan";
+        if(username==="" || !username.match(regex)){
+            message="Username ne sme biti prazan i ne sme sadrzati specijalne karaktere";
         }else if(password==="")
         {
             message="Password ne sme biti prazan";
@@ -243,10 +244,11 @@ function testPoslodavac(username,password,email,naziv,adresa,slika){
 
 function testRadnik(username,password,email,ime,prezime,date,slika){
     var message="";
+    var regex=new RegExp("^[a-zA-Z0-9]*$");
     var date=decodeURI(date);
         var glavnaPoruka="";
-        if(username===""){
-            message="Username ne sme biti prazan";
+        if(username==="" || !username.match(regex)){
+            message="Username ne sme biti prazan i ne sme sadrzati specijalne karaktere";
         }else if(password==="")
         {
             message="Password ne sme biti prazan";
